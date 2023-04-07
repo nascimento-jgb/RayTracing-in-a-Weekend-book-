@@ -6,7 +6,7 @@
 #    By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 09:05:28 by jonascim          #+#    #+#              #
-#    Updated: 2023/04/06 09:30:51 by jonascim         ###   ########.fr        #
+#    Updated: 2023/04/07 15:32:21 by jonascim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ RM			= rm -f
 
 #Sources
 
-SRC_FILES	=	main.c
+SRC_FILES	=	main.c colors.c ray.c vector_utils.c vector_utils_2.c
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(SRC_FILES))
 
