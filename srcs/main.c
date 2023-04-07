@@ -5,95 +5,79 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 09:08:34 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/06 13:29:05 by jonascim         ###   ########.fr       */
+/*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
+/*   Updated: 2023/04/07 15:42:34 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// ctrl + shift L AND fn + f2
 #include "../includes/mlx.h"
-#include "../includes/example.h"
+#include "../includes/mlx_base.h"
+#include "../includes/color.h"
+#include "../includes/ray.h"
+#include "../includes/vector.h"
+#include <stdlib.h>
 
-int	main(void)
+int main()
 {
-	t_mlx	mlx;
-	int		count_w;
-	int		count_h;
+	int			index;
+	double		aspect_ratio;
+	int			image_width;
+	int			image_height;
+	double		viewboard_height;
+	double		viewboard_width;
+	double		focal_length;
+	t_mlx		mlx;
+	t_point		*origin;
+	t_vector	*horizontal;
+	t_vector	*vertical;
+	t_vector	*lower_left_corner;
+	t_ray		*ray;
+	t_color		*pixel_color;
 
-	count_h = -1;
 	mlx.mlx_ptr = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "A simple example");
-	mlx.img.img_ptr = mlx_new_image(mlx.mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
+	mlx.win = mlx_new_window(mlx.mlx_ptr, WIN_HEIGHT, WIN_WIDTH, "MiniRT");
 
-	/*
-	 Now the important part :
-	 mlx_get_data_addr will return a char* that is 4 times the (width * height) of your image.
-	 Why so ? Let me explain : This char* will represent your image, pixel by pixel,
-	 and the values of this array are the colors. That's why the array is 4 times bigger :
-	 you need 4 char to code the color of each pixels (one for Red, Green and Blue) and one for the alpha.
-	 But... it's not very convenient, right ? So here is my little trick : you cast
-	 mlx_get_data_addr as an int* and store it in an int*.
-	 This way, the array will have the exact same size as your window, and each index
-	 will represent one complete color of a pixel !
-	*/
+	// Image
+	aspect_ratio = 16.0 / 9.0;
+	image_width = 400;
+	image_height = (int)(image_width / aspect_ratio);
 
-	mlx.img.data = (int *)mlx_get_data_addr(mlx.img.img_ptr, &mlx.img.bpp, &mlx.img.size_l, &mlx.img.endian);
+	// Camera
+	viewboard_height = 2.0;
+	viewboard_width = aspect_ratio * viewboard_height;
+	focal_length = 1.0;
 
-	/*
-	 Now just a little example : here is a loop that will draw each pixels that
-	 have an odd width in white and the ones that have an even width in black.
-	*/
+	origin = new_point(0, 0, 0);
+	horizontal = vec_create(viewboard_width, 0, 0);
+	vertical = vec_create(0, viewboard_height, 0);
+	lower_left_corner = subtract_two_vectors(subtract_two_vectors((t_vector *)origin,
+				vector_times_scalar(horizontal, 0.5)),
+			subtract_two_vectors(vector_times_scalar(vertical, 0.5),
+				vec_create(0, 0, focal_length)));
 
-	while (++count_h < WIN_HEIGHT)
+	// Render
+	mlx.img->img_ptr = mlx_new_image(mlx.mlx_ptr, image_width, image_height);
+	mlx.img->addr = mlx_get_data_addr(mlx.img->img_ptr, &mlx.img->bpp,
+			&mlx.img->size_l, &mlx.img->endian);
+	index = 0;
+	for (int j = image_height-1; j >= 0; --j)
 	{
-		count_w = -1;
-		while (++count_w < WIN_WIDTH)
+		for (int i = 0; i < image_width; ++i)
 		{
-			// float t = (float)count_w / WIN_WIDTH; // calculate current position as a float between 0 and 1
-			float	r, g, b;
-
-			r = (count_w / WIN_WIDTH - 1);
-			g = (count_h / WIN_HEIGHT - 1);
-			b = 0.25;
-
-			int ir, ig, ib;
-			//RETURN HERE
-			r = (count_w / WIN_WIDTH - 1);
-			g = (count_h / WIN_HEIGHT - 1);
-			b = 0.25;
-
-			// if (t < 0.5f)
-			// {
-			// 	// calculate red and green components (increase from 0 to 255)
-			// 	r = (int)(255 * (t * 2));
-			// 	g = (int)(255 * (t * 2));
-			// 	b = 0;
-        	// }
-			// else
-			// {
-			// 	// calculate green and blue components (decrease from 255 to 0)
-			// 	r = 0;
-			// 	g = (int)(255 * ((1 - t) * 2));
-			// 	b = (int)(255 * ((1 - t) * 2));
-			// }
-			int hex_color = (r << 16) | (g << 8) | b; // combine red, green, and blue components into a hex color value
-			mlx.img.data[count_h * WIN_WIDTH + count_w] = hex_color;
-			// if (count_w % 2)
-			// 	/*
-			// 	 As you can see here instead of using the mlx_put_pixel function
-			// 	 I just assign a color to each pixel one by one in the image,
-			// 	 and the image will be printed in one time at the end of the loop.
-			// 	 Now one thing to understand here is that you're working on a 1-dimensional
-			// 	 array, while your window is (obviously) 2-dimensional.
-			// 	 So, instead of having data[height][width] here you'll have the following
-			// 	 formula : [current height * max width + current width] (as you can see below)
-			//mlx.img.data[count_h * WIN_WIDTH + count_w] = hex_color;
-			// 	*/
-			// 	mlx.img.data[count_h * WIN_WIDTH + count_w] = hex_color;
-			// else
-			// 	mlx.img.data[count_h * WIN_WIDTH + count_w] = 0;
+			double u = (double)i / (image_width - 1);
+			double v = (double)j / (image_height - 1);
+			ray = new_ray(origin, add_two_vectors(lower_left_corner,
+						add_two_vectors(vector_times_scalar(horizontal, u),
+							vector_times_scalar(vertical, v))));
+			pixel_color = ray_color(ray);
+			mlx.img->addr[index] = (char)(pixel_color->r * 255.999);
+			mlx.img->addr[index + 1] = (char)(pixel_color->g * 255.999);
+			mlx.img->addr[index + 2] = (char)(pixel_color->b * 255.999);
+			index += 4;
 		}
 	}
-	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, mlx.img.img_ptr, 0, 0);
+	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, mlx.img, 0, 0);
 	mlx_loop(mlx.mlx_ptr);
 	return (0);
 }
