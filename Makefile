@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+         #
+#    By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 09:05:28 by jonascim          #+#    #+#              #
-#    Updated: 2023/04/07 15:32:21 by jonascim         ###   ########.fr        #
+#    Updated: 2023/04/12 19:05:56 by helneff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,10 @@ RM			= rm -f
 
 #Sources
 
-SRC_FILES	=	main.c colors.c ray.c vector_utils.c vector_utils_2.c
+SRC_FILES	=	main.c				colors.c		ray.c				vector_utils.c \
+				vector_utils_2.c	parser.c		parser_utils.c		parser_camera.c \
+				parser_ambient.c	parser_light.c	parser_sphere.c		parser_plane.c \
+				parser_cylinder.c
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(SRC_FILES))
 
