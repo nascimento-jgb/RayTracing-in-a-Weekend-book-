@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser_light.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:44:42 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/12 18:58:18 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/13 13:14:07 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parser.h"
+#include "../../includes/parser.h"
 
-#include "../includes/libft.h"
+#include "../../includes/libft.h"
 
 int	parse_light(t_scene *scene, const char *elem)
 {

@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parser.h"
+#include "../../includes/parser.h"
 
-#include "../includes/libft.h"
+#include "../../includes/libft.h"
 
 int	parse_cylinder(t_scene *scene, const char *elem)
 {

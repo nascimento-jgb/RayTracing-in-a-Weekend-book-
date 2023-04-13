@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:36:17 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/13 13:02:33 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:11:03 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	write_color_screen(t_mlx *scene, int x, int y, t_vector color)
 	unsigned int	color_val;
 	char			*pixel_ptr;
 
-	color_val = mlx_get_color_value(scene.mlx_ptr, (int)(255.999 * color.x))
-		<< 16 | mlx_get_color_value(scene.mlx_ptr, (int)(255.999 * color.y))
-		<< 8 | mlx_get_color_value(scene.mlx_ptr, (int)(255.999 * color.z));
-	pixel_ptr = scene.img.addr + (y * scene.img.size_l + x
-			* (scene.img.bpp / 8));
+	color_val = mlx_get_color_value(scene->mlx_ptr, (int)(255.999 * color.x))
+		<< 16 | mlx_get_color_value(scene->mlx_ptr, (int)(255.999 * color.y))
+		<< 8 | mlx_get_color_value(scene->mlx_ptr, (int)(255.999 * color.z));
+	pixel_ptr = scene->img_data.addr + (y * scene->img_data.size_l + x
+			* (scene->img_data.bpp / 8));
 	*(unsigned int *)pixel_ptr = color_val;
 }
 

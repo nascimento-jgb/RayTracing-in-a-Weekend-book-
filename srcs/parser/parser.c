@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:29:14 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/12 19:06:10 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/13 13:14:35 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../../includes/libft.h"
 
-#include "../includes/parser.h"
+#include "../../includes/parser.h"
 
 static void	error(size_t elem_count)
 {

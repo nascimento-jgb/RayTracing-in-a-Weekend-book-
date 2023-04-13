@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser_plane.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:44:42 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/12 19:44:34 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/13 13:14:14 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parser.h"
+#include "../../includes/parser.h"
 
-#include "../includes/libft.h"
+#include "../../includes/libft.h"
 
 int	parse_plane(t_scene *scene, const char *elem)
 {

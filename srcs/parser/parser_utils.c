@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 13:50:31 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/12 20:23:29 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/13 13:14:27 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../../includes/libft.h"
 
-#include "../includes/parser.h"
+#include "../../includes/parser.h"
 
 int	eat_whitespace(const char **elem)
 {
