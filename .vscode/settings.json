@@ -1,0 +1,11 @@
+{
+	"files.associations": {
+		"colors.h": "c",
+		"ray.h": "c",
+		"vector.h": "c",
+		"ios": "c",
+		"mlx_base.h": "c",
+		"color.h": "c",
+		"libft.h": "c"
+	}
+}
