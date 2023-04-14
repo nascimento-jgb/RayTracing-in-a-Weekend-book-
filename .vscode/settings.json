@@ -6,6 +6,7 @@
 		"ios": "c",
 		"mlx_base.h": "c",
 		"color.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"minirt_mlx.h": "c"
 	}
 }

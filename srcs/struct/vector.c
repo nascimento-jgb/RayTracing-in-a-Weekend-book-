@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 10:40:06 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/14 10:55:29 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:36:30 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,4 @@ double	vec_lenght_squared(t_vector *vec)
 double	vec_magnitude_calc(t_vector *vec)
 {
 	return (sqrt(vec_lenght_squared(vec)));
-}
-
-t_vector	*add_two_vectors(t_vector *vecA, t_vector *vecB)
-{
-	t_vector	*vec_sum;
-
-	vec_sum = (t_vector *)malloc(sizeof(t_vector));
-	if (!vec_sum)
-		return (NULL);
-	vec_sum->x = vecA->x + vecB->x;
-	vec_sum->y = vecA->y + vecB->y;
-	vec_sum->z = vecA->z + vecB->z;
-	return (vec_sum);
 }

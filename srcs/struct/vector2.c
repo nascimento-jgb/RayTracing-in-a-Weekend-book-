@@ -6,11 +6,24 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 10:43:27 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/14 10:55:30 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:40:27 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt_struct.h"
+
+t_vector	*add_two_vectors(t_vector *vecA, t_vector *vecB)
+{
+	t_vector	*vec_sum;
+
+	vec_sum = (t_vector *)malloc(sizeof(t_vector));
+	if (!vec_sum)
+		return (NULL);
+	vec_sum->x = vecA->x + vecB->x;
+	vec_sum->y = vecA->y + vecB->y;
+	vec_sum->z = vecA->z + vecB->z;
+	return (vec_sum);
+}
 
 t_vector	*subtract_two_vectors(t_vector *vecA, t_vector *vecB)
 {
@@ -23,14 +36,6 @@ t_vector	*subtract_two_vectors(t_vector *vecA, t_vector *vecB)
 	vec_sub->y = vecA->y - vecB->y;
 	vec_sub->z = vecA->z - vecB->z;
 	return (vec_sub);
-}
-
-t_vector	*vector_multiply_scalar(t_vector *vec, double t)
-{
-	vec->x *= t;
-	vec->y *= t;
-	vec->z *= t;
-	return (vec);
 }
 
 t_vector	*create_unit_vector(t_vector *vec)

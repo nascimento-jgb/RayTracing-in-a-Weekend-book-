@@ -6,11 +6,11 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:03:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/14 11:14:56 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:49:22 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt_struct.h"
+#include "../../includes/minirt_mlx.h"
 
 t_ray	*new_ray(t_vector *orig, t_vector *dir)
 {
@@ -28,35 +28,41 @@ t_ray	*new_ray(t_vector *orig, t_vector *dir)
 	return (new_ray);
 }
 
-t_vector	*new_point(double x, double y, double z)
-{
-	t_vector	*new_pt;
 
-	new_pt = (t_vector *)malloc(sizeof(t_vector));
-	if (!new_pt)
-		return (NULL);
-	new_pt->x = x;
-	new_pt->y = y;
-	new_pt->z = z;
-	return (new_pt);
+t_ray	*render_ray(int x, int y, t_cam	*visual)
+{
+	t_ray		*ray;
+	t_vector	*aux;
+	t_vector	*aux2;
+
+	aux = vec_mul_scalar_apply(visual->horizontal,
+			(double)x / (visual->img->img_width - 1));
+	aux2 = vec_mul_scalar_apply(visual->vertical,
+			(double)y / (visual->img->img_height - 1));
+	vec_add_apply(aux, aux);
+	free(aux2);
+	vec_add_apply(aux, visual->lower_left_corner);
+	ray = new_ray(visual->origin, vec_sub_apply(aux, visual->origin));
+	return (ray);
 }
 
 t_vector	*ray_at(t_ray *ray, double t)
 {
-	return (add_two_vectors(ray->origin,
-			vector_multiply_scalar(ray->direction, t)));
+	t_vector	*result;
+	t_vector	*aux_vec;
+
+	aux_vec = vec_mul_scalar_apply(ray->direction, t);
+	result = add_two_vectors(aux_vec, ray->origin);
+	free(aux_vec);
+	return (result);
 }
 
-// t_vector	ray_color(t_ray *ray)
-// {
-// 	t_vector	*unit_direction;
-// 	double		t;
-
-// 	unit_direction = (t_vector *)malloc(sizeof(t_vector));
-// 	if (!unit_direction)
-// 		return (NULL);
-// 	unit_direction = create_unit_vector(ray->direction);
-// 	t = 0->5 * (unit_direction->y + 1->0);
-// 	return (color_add(color_multiply_scalar(color_new(1->0, 1->0, 1->0), 1->0 - t),
-// 			color_multiply_scalar(color_new(0->5, 0->7, 1->0), t)));
-// }
+void	free_ray(t_ray *ray, int is_orig_free)
+{
+	if (ray == NULL)
+		return ;
+	if (is_orig_free && ray->origin != NULL)
+		free(ray->origin);
+	free(ray->direction);
+	free(ray);
+}

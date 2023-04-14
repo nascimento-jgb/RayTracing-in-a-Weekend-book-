@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/14 13:34:52 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:37:34 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,17 @@
 int	main(void)
 {
 	t_img_data	*image;
+	t_cam		*visual_info;
+	double		aspect_ratio;
 
 	// int	scene_file = open("test.rt", O_RDONLY);
 	// t_scene	*scene = parse_scene_file(scene_file);
 	// print_scene_values(scene);
-	image = create_img_data(1000, 1000);
+	aspect_ratio = 16.0 / 9.0;
+	image = create_img_data(400, (int)(400 / aspect_ratio));
+	visual_info = cam_info_init(2 * aspect_ratio, 2.0, 1.0);
 	// draw_image(image); // gradient draw
-	create_ray_image(image);
+	create_render_image(image, visual_info);
 	mlx_exec(image, "miniRT");
 	free_img_data(image);
 	return (0);
