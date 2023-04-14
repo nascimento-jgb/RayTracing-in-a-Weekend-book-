@@ -1,4 +1,5 @@
 minirt
+minirt.dSYM/
 *.o
 *.gch
 *.a

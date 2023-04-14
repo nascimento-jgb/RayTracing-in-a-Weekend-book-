@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 08:54:07 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/14 11:16:03 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:27:54 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_img_data	*create_img_data(int width, int height)
 		return (NULL);
 	new->img_width = width;
 	new->img_height = height;
-	new->ref = (int **)malloc(sizeof(int) * width);
+	new->ref = (int **)malloc(sizeof(int *) * width);
 	if (!new->ref)
 		return (NULL);
 	i = -1;

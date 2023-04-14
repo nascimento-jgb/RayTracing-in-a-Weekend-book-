@@ -6,22 +6,22 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 09:13:49 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/14 11:18:53 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:36:37 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt_mlx.h"
 
-int	exit_program(int flag)
+int	exit_program(void)
 {
-	exit(flag);
+	exit(0);
 	return (0);
 }
 
 int	mlx_key_handle(int keycode)
 {
 	if (keycode == 53)
-		return (exit_program(0));
+		return (exit_program());
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:49:04 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/14 11:19:03 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:25:55 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_img_data	*create_img_data(int width, int height);
 void		free_img_data(t_img_data *program);
 
 // mlx utils
-int			exit_program(int flag);
+int			exit_program(void);
 int			mlx_key_handle(int keycode);
 void		mlx_draw_by_img_data(t_mlx_data *prog, t_img_data *data);
 void		mlx_show(t_img_data *data, char *title);

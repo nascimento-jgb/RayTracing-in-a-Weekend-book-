@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/14 11:19:51 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:34:52 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,9 @@ int	main(void)
 	// int	scene_file = open("test.rt", O_RDONLY);
 	// t_scene	*scene = parse_scene_file(scene_file);
 	// print_scene_values(scene);
-	image = create_img_data(1280, 720);
-	draw_image(image);
+	image = create_img_data(1000, 1000);
+	// draw_image(image); // gradient draw
+	create_ray_image(image);
 	mlx_exec(image, "miniRT");
 	free_img_data(image);
 	return (0);
