@@ -6,7 +6,7 @@
 #    By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 09:05:28 by jonascim          #+#    #+#              #
-#    Updated: 2023/04/14 15:40:24 by jonascim         ###   ########.fr        #
+#    Updated: 2023/04/15 11:44:13 by jonascim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ STRUCT_DIR	= srcs/struct/
 UTILS_DIR	= srcs/utils/
 CC			= cc
 CFLAGS		= -Wall -Werror -Wextra
-MLXFLAGS	= -framework OpenGL -framework AppKit
+MLXFLAGS	= -framework OpenGL -framework AppKit -g -fsanitize=address
 RM			= rm -f
 
 #Sources
@@ -39,7 +39,7 @@ STRUCT_FILES	=	ray.c vector.c vector2.c vector3.c
 UTILS_FILES		=	calc_utils.c color_utils.c draw_utils.c img_data_utils.c mlx_utils.c
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(SRC_FILES))
-SRC 		= 	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
+OBJ 		= 	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
 PARS 		= 	$(addprefix $(PARS_DIR), $(PARS_FILES))
 STRUCT 		= 	$(addprefix $(STRUCT_DIR), $(STRUCT_FILES))
 UTILS 		= 	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
@@ -50,7 +50,7 @@ all:		$(NAME)
 
 $(NAME):	$(SRC)
 			@make -C $(LIBFT)
-			@$(CC) $(CFLAGS) $(SRC) $(PARS) $(STRUCT) $(UTILS) -o $(NAME)  -L. $(LIBFT)/libft.a -L. -lmlx $(MLXFLAGS)
+			@$(CC) $(CFLAGS) $(SRC) $(OBJ) $(PARS) $(STRUCT) $(UTILS) -o $(NAME)  -L. $(LIBFT)/libft.a -L. -lmlx $(MLXFLAGS)
 
 clean:
 			@make clean -C $(LIBFT)

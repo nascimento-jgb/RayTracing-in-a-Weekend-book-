@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:03:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/14 15:49:22 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/15 13:02:38 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,8 @@ t_ray	*new_ray(t_vector *orig, t_vector *dir)
 	new_ray = (t_ray *)malloc(sizeof(t_ray));
 	if (!new_ray)
 		return (NULL);
-	new_ray->origin->x = orig->x;
-	new_ray->origin->y = orig->y;
-	new_ray->origin->z = orig->z;
-	new_ray->direction->x = dir->x;
-	new_ray->direction->y = dir->y;
-	new_ray->direction->z = dir->z;
+	new_ray->origin = orig;
+	new_ray->direction = dir;
 	return (new_ray);
 }
 
@@ -35,11 +31,11 @@ t_ray	*render_ray(int x, int y, t_cam	*visual)
 	t_vector	*aux;
 	t_vector	*aux2;
 
-	aux = vec_mul_scalar_apply(visual->horizontal,
+	aux = vec_mul_scalar(visual->horizontal,
 			(double)x / (visual->img->img_width - 1));
-	aux2 = vec_mul_scalar_apply(visual->vertical,
+	aux2 = vec_mul_scalar(visual->vertical,
 			(double)y / (visual->img->img_height - 1));
-	vec_add_apply(aux, aux);
+	vec_add_apply(aux, aux2);
 	free(aux2);
 	vec_add_apply(aux, visual->lower_left_corner);
 	ray = new_ray(visual->origin, vec_sub_apply(aux, visual->origin));

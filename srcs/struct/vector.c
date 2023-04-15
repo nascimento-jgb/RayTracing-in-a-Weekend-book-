@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 10:40:06 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/14 15:36:30 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/15 12:59:22 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ t_vector	*negative_of_vec(t_vector *vec)
 	vec->y *= -1;
 	vec->z *= -1;
 	return (vec);
+}
+
+t_vector	*vec_mul_scalar(t_vector *vec, double num)
+{
+	t_vector	*result;
+
+	result = (t_vector *)malloc(sizeof(t_vector));
+	if (!result)
+		return (NULL);
+	result->x = vec->x * num;
+	result->y = vec->y * num;
+	result->z = vec->z * num;
+	return (result);
 }
 
 double	vec_lenght_squared(t_vector *vec)

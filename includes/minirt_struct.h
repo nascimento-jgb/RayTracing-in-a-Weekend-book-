@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:38:56 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/14 15:52:38 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/15 12:59:46 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_ray
 //Vector
 t_vector	*vec_create(double x, double y, double z);
 t_vector	*negative_of_vec(t_vector *vec);
+t_vector	*vec_mul_scalar(t_vector *vec, double num);
 double		vec_lenght_squared(t_vector *vec);
 double		vec_magnitude_calc(t_vector *vec);
 //vector2

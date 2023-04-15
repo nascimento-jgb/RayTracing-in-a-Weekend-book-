@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:43:41 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/14 15:52:44 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/15 13:03:16 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	atribute_color_to_ray(t_ray *ray)
 	t = 0.5 * (aux->y + 1.0);
 	free(aux);
 	aux = vec_mul_scalar_apply(vec_create(1, 1, 1), 1.0 - t);
-	aux = vec_mul_scalar_apply(vec_create(0.5, 0.7, 1), t);
+	aux2 = vec_mul_scalar_apply(vec_create(0.5, 0.7, 1), t);
 	vec_add_apply(aux, aux2);
 	free(aux2);
 	result = get_color_val(aux);

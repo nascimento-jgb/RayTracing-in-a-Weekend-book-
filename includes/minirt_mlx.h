@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:49:04 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/14 15:52:50 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/15 11:34:21 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void		draw_vertical_line(t_img_data *data, int x);
 void		drwa_horizontal_line(t_img_data *data, int y);
 
 //Ray Image
+void		create_render_image(t_img_data *data, t_cam_info *info);
 t_cam_info	*init_cam_info(double w, double h, double fl);
 t_cam		*init_cam_struct(t_cam_info *info, t_vector *origin);
 t_cam_info	*init_cam_info(double w, double h, double fl);

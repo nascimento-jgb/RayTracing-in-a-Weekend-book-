@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 09:13:49 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/14 12:36:37 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/15 13:02:37 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	mlx_exec(t_img_data *data, char *name)
 	mlx_draw_by_img_data(new, data);
 	mlx_put_image_to_window(init.mlx_ptr, init.win_ptr, new->img_ptr, 0, 0);
 	mlx_destroy_image(init.mlx_ptr, new->img_ptr);
+	mlx_hook(init.win_ptr, 2, 1L << 0, mlx_key_handle, 0);
 	mlx_hook(init.win_ptr, 17, 1L << 17, exit_program, 0);
 	mlx_loop(init.mlx_ptr);
 	free(new);
