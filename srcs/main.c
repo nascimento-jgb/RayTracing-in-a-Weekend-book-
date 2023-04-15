@@ -6,18 +6,15 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/15 11:40:22 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/15 15:12:14 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt_mlx.h"
-
+#include "../includes/parser.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>
-
-#include "../includes/parser.h"
-#include <stdio.h>
 
 // static void	print_scene_values(t_scene *scene)
 // {
@@ -73,17 +70,21 @@ int	main(void)
 {
 	t_img_data	*image;
 	t_cam_info	*visual_info;
+	t_sphere2	*sphere;
 	double		aspect_ratio;
 
 	// int	scene_file = open("test.rt", O_RDONLY);
 	// t_scene	*scene = parse_scene_file(scene_file);
 	// print_scene_values(scene);
 	aspect_ratio = 16.0 / 9.0;
-	image = create_img_data(400, (int)(400 / aspect_ratio));
+	image = create_img_data(1280, (int)(1280 / aspect_ratio));
 	visual_info = init_cam_info(2.0 * aspect_ratio, 2.0, 1.0);
 	// draw_image(image); // gradient draw
 	create_render_image(image, visual_info);
+	sphere = init_sphere(vec_create(0, 0, -1), 0.5);
+	draw_sphere(image, visual_info, sphere);
 	mlx_exec(image, "miniRT");
+	free_sphere(sphere);
 	free(visual_info);
 	free_img_data(image);
 	return (0);

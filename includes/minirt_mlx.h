@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:49:04 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/15 11:34:21 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/15 14:39:40 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int			mlx_exec(t_img_data *data, char *name);
 void		draw_image(t_img_data *data);
 void		draw_vertical_line(t_img_data *data, int x);
 void		drwa_horizontal_line(t_img_data *data, int y);
+void		draw_sphere(t_img_data *data, t_cam_info *info, t_sphere2 *sphere);
 
 //Ray Image
 void		create_render_image(t_img_data *data, t_cam_info *info);
