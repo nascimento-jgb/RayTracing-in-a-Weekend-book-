@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_sphere.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:44:42 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/13 13:14:21 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/17 12:39:14 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 #include "../../includes/libft.h"
 
-int	parse_sphere(t_scene *scene, const char *elem)
+int	parse_sphere(t_scene_data *scene, const char *elem)
 {
-	t_sphere	*sphere;
+	t_sphere_data	*sphere;
 
-	sphere = malloc(sizeof(t_sphere));
+	sphere = malloc(sizeof(t_sphere_data));
 	if (!sphere)
 		return (1);
 	if (parse_num(&elem, &sphere->pos_x) || eat_comma(&elem)

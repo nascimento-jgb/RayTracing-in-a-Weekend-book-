@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:29:14 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/13 13:14:35 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/17 12:39:39 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	skip_identifier(const char **elem)
 		(*elem)++;
 }
 
-static void	parse_element(t_scene *scene, const char *elem)
+static void	parse_element(t_scene_data *scene, const char *elem)
 {
 	static int				elem_count = 1;
 	static const char		*identifiers[]
@@ -55,12 +55,12 @@ static void	parse_element(t_scene *scene, const char *elem)
 	error(elem_count);
 }
 
-t_scene	*parse_scene_file(int fd)
+t_scene_data	*parse_scene_file(int fd)
 {
-	const char	*elem = get_next_line(fd);
-	t_scene		*scene;
+	const char		*elem = get_next_line(fd);
+	t_scene_data	*scene;
 
-	scene = ft_calloc(1, sizeof(t_scene));
+	scene = ft_calloc(1, sizeof(t_scene_data));
 	if (!scene)
 		return (NULL);
 	while (elem != NULL)
