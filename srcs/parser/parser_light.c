@@ -6,13 +6,13 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:44:42 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/17 12:38:56 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/18 12:27:38 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parser.h"
+#include "parser.h"
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
 int	parse_light(t_scene_data *scene, const char *elem)
 {

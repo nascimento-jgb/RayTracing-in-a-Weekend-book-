@@ -6,11 +6,11 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 10:16:16 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 14:10:47 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:00:59 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt_mlx.h"
+#include "minirt_mlx.h"
 
 void	draw_image(t_img_data *data)
 {

@@ -6,11 +6,11 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 08:54:07 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 14:12:11 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:01:43 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt_mlx.h"
+#include "minirt_mlx.h"
 
 t_img_data	create_img_data(int width, int height)
 {
@@ -31,13 +31,3 @@ t_img_data	create_img_data(int width, int height)
 	}
 	return (new);
 }
-
-// void	free_img_data(t_img_data *data)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	while (++i < data->img_width)
-// 		free(data->ref[i]);
-// 	free(data->ref);
-// }

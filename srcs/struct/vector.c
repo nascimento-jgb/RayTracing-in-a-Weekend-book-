@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 10:40:06 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 08:32:52 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:27:38 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt_struct.h"
+#include "minirt_struct.h"
 
 t_vector	vec_create(double x, double y, double z)
 {

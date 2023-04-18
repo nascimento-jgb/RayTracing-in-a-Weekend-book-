@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 14:59:42 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 08:55:03 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:27:38 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt_mlx.h"
+#include "minirt_mlx.h"
 
 t_vector	vec_add_apply(t_vector vecA, t_vector vecB)
 {

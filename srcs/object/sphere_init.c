@@ -6,11 +6,11 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:21:40 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 14:57:47 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:00:28 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt_mlx.h"
+#include "minirt_mlx.h"
 
 t_sphere2	*init_sphere(t_vector center, double radius)
 {

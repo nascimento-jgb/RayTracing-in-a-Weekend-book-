@@ -6,11 +6,11 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:03:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 14:20:58 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:00:34 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt_mlx.h"
+#include "minirt_mlx.h"
 
 t_ray	new_ray(t_vector orig, t_vector dir)
 {

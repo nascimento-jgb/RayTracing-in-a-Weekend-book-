@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 09:13:49 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 10:33:34 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:27:38 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt_mlx.h"
+#include "minirt_mlx.h"
 
 int	exit_program(void)
 {

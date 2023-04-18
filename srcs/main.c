@@ -6,12 +6,12 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 14:55:05 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:01:55 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minirt_mlx.h"
-#include "../includes/parser.h"
+#include "minirt_mlx.h"
+#include "parser.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>

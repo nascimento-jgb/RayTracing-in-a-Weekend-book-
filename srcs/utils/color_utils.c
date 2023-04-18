@@ -6,12 +6,12 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:36:17 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 14:18:58 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:00:42 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt_struct.h"
-#include "../../includes/minirt_mlx.h"
+#include "minirt_struct.h"
+#include "minirt_mlx.h"
 
 int	get_color_val(t_vector color)
 {
