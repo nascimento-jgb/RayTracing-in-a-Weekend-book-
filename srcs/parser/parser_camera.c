@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_camera.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:44:42 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/13 13:13:58 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/17 12:38:42 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "../../includes/libft.h"
 
-int	parse_camera(t_scene *scene, const char *elem)
+int	parse_camera(t_scene_data *scene, const char *elem)
 {
 	static int	first = 1;
 

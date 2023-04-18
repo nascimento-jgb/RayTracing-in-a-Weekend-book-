@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_plane.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:44:42 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/13 13:14:14 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/17 12:39:05 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 #include "../../includes/libft.h"
 
-int	parse_plane(t_scene *scene, const char *elem)
+int	parse_plane(t_scene_data *scene, const char *elem)
 {
-	t_plane	*plane;
+	t_plane_data	*plane;
 
-	plane = malloc(sizeof(t_plane));
+	plane = malloc(sizeof(t_plane_data));
 	if (!plane)
 		return (1);
 	if (parse_num(&elem, &plane->pos_x) || eat_comma(&elem)

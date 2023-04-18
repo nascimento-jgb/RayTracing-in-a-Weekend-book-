@@ -14,11 +14,11 @@
 
 #include "../../includes/libft.h"
 
-int	parse_cylinder(t_scene *scene, const char *elem)
+int	parse_cylinder(t_scene_data *scene, const char *elem)
 {
-	t_cylinder	*cylinder;
+	t_cylinder_data	*cylinder;
 
-	cylinder = malloc(sizeof(t_cylinder));
+	cylinder = malloc(sizeof(t_cylinder_data));
 	if (!cylinder)
 		return (1);
 	if (parse_num(&elem, &cylinder->pos_x) || eat_comma(&elem)
