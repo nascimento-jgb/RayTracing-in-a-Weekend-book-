@@ -6,26 +6,26 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:36:17 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/14 11:15:26 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 10:11:57 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt_struct.h"
 #include "../../includes/minirt_mlx.h"
 
-int	get_color_val(t_vector *color)
+int	get_color_val(t_vector color)
 {
 	int		x;
 	int		y;
 	int		z;
 
-	x = blend(color->x, 0.0, 0.999) * 256.0;
-	y = blend(color->y, 0.0, 0.999) * 256.0;
-	z = blend(color->z, 0.0, 0.999) * 256.0;
+	x = blend(color.x, 0.0, 0.999) * 256.0;
+	y = blend(color.y, 0.0, 0.999) * 256.0;
+	z = blend(color.z, 0.0, 0.999) * 256.0;
 	return (x << 16 | y << 8 | z);
 }
 
-int	get_color_sample_gamma(t_vector *color)
+int	get_color_sample_gamma(t_vector color)
 {
 	double	scale;
 	double	x;
@@ -33,22 +33,21 @@ int	get_color_sample_gamma(t_vector *color)
 	double	z;
 
 	scale = 1.0 / 50;
-	x = sqrt(color->x * scale);
-	y = sqrt(color->y * scale);
-	z = sqrt(color->z * scale);
+	x = sqrt(color.x * scale);
+	y = sqrt(color.y * scale);
+	z = sqrt(color.z * scale);
 	x = blend(x, 0.0, 0.999) * 256.0;
 	y = blend(y, 0.0, 0.999) * 256.0;
 	z = blend(z, 0.0, 0.999) * 256.0;
 	return ((int)x << 16 | (int)y << 8 | (int)z);
 }
 
-t_vector	*get_color(int rgb)
+t_vector	get_color(int rgb)
 {
-	t_vector	*result;
+	t_vector	result;
 
-	result = (t_vector *)malloc(sizeof(t_vector));
-	result->x = (rgb & (0xFF << 16)) >> 16;
-	result->y = (rgb & (0xFF << 8)) >> 8;
-	result->z = rgb & 0xFF;
+	result.x = (rgb & (0xFF << 16)) >> 16;
+	result.y = (rgb & (0xFF << 8)) >> 8;
+	result.z = rgb & 0xFF;
 	return (result);
 }
