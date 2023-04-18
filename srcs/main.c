@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 10:16:04 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 14:55:05 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@
 
 int	main(void)
 {
-	t_img_data	*image;
-	// t_cam_info	visual_info;
-	// t_sphere2	sphere;
+	t_img_data	image;
+	t_cam_info	visual_info;
+	// t_sphere2	*sphere;
 	double		aspect_ratio;
 
 	// int	scene_file = open("test.rt", O_RDONLY);
@@ -78,12 +78,11 @@ int	main(void)
 	// print_scene_values(scene);
 	aspect_ratio = 16.0 / 9.0;
 	image = create_img_data(1280, (int)(1280 / aspect_ratio));
-	// visual_info = init_cam_info(2.0 * aspect_ratio, 2.0, 1.0);
-	draw_image(image); // gradient draw
-	// create_render_image(image, visual_info);
+	visual_info = init_cam_info(2.0 * aspect_ratio, 2.0, 1.0);
+	// draw_image(&image); // gradient draw
+	create_render_image(image, visual_info);
 	// sphere = init_sphere(vec_create(0, 0, -1), 0.5);
 	// draw_sphere(image, visual_info, sphere);
-	mlx_exec(image, "miniRT");
-	free_img_data(image);
+	mlx_exec(&image, "miniRT");
 	return (0);
 }

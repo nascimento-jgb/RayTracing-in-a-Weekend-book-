@@ -6,7 +6,7 @@
 #    By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 09:05:28 by jonascim          #+#    #+#              #
-#    Updated: 2023/04/15 13:52:38 by jonascim         ###   ########.fr        #
+#    Updated: 2023/04/18 11:34:34 by jonascim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ STRUCT_DIR	= srcs/struct/
 UTILS_DIR	= srcs/utils/
 CC			= cc
 CFLAGS		= -Wall -Werror -Wextra
-MLXFLAGS	= -framework OpenGL -framework AppKit
+MLXFLAGS	= -framework OpenGL -framework AppKit -g -fsanitize=address
 RM			= rm -f
 
 #Sources

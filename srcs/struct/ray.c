@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:03:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 08:50:26 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 14:20:58 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ t_ray	new_ray(t_vector orig, t_vector dir)
 }
 
 
-t_ray	render_ray(int x, int y, t_cam	visual)
+t_ray	render_ray(int x, int y, t_cam visual)
 {
 	t_ray		ray;
 	t_vector	aux;
 	t_vector	aux2;
 
 	aux = vec_mul_scalar(visual.horizontal,
-			(double)x / (visual.img.img_width - 1));
+			(double)(x / (visual.img->img_width - 1)));
 	aux2 = vec_mul_scalar(visual.vertical,
-			(double)y / (visual.img.img_height - 1));
+			(double)(y / (visual.img->img_height - 1)));
 	vec_add_apply(aux, aux2);
 	vec_add_apply(aux, visual.lower_left_corner);
 	ray = new_ray(visual.origin, vec_sub_apply(aux, visual.origin));

@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:38:56 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 08:54:10 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 14:57:16 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ t_vector	ray_at(t_ray ray, double t);
 
 //Sphere
 int			ray_hit_sphere(t_sphere2 sphere, t_ray ray);
-int			ray_hit_sphere2(t_sphere2 sphere, t_ray ray);
-t_sphere2	init_sphere(t_vector center, double radius);
-int			atribute_color_to_ray2(t_ray ray, t_sphere2 sphere);
+// int		ray_hit_sphere2(t_sphere2 sphere, t_ray ray);
+t_sphere2	*init_sphere(t_vector center, double radius);
+// int		atribute_color_to_ray2(t_ray ray, t_sphere2 sphere);
 
 #endif
