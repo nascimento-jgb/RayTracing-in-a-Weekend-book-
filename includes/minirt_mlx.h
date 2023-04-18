@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:49:04 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/15 14:39:40 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 10:21:29 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ typedef struct s_cam_info
 
 typedef struct s_cam
 {
-	t_img_data	*img;
-	t_vector	*origin;
-	t_vector	*horizontal;
-	t_vector	*vertical;
-	t_vector	*lower_left_corner;
+	t_img_data	img;
+	t_vector	origin;
+	t_vector	horizontal;
+	t_vector	vertical;
+	t_vector	lower_left_corner;
 }	t_cam;
 
 //Calc utils
@@ -65,9 +65,9 @@ double		blend(double x, double min, double max);
 double		get_radian(double degree);
 
 //Color Utils
-int			get_color_val(t_vector *color);
-int			get_color_sample_gamma(t_vector *color);
-t_vector	*get_color(int rgb);
+int			get_color_val(t_vector color);
+int			get_color_sample_gamma(t_vector color);
+t_vector	get_color(int rgb);
 
 // Img data utils
 t_img_data	*create_img_data(int width, int height);
@@ -77,22 +77,20 @@ void		free_img_data(t_img_data *program);
 int			exit_program(void);
 int			mlx_key_handle(int keycode);
 void		mlx_draw_by_img_data(t_mlx_data *prog, t_img_data *data);
-void		mlx_show(t_img_data *data, char *title);
 int			mlx_exec(t_img_data *data, char *name);
 
 //Draw Utils
 void		draw_image(t_img_data *data);
-void		draw_vertical_line(t_img_data *data, int x);
-void		drwa_horizontal_line(t_img_data *data, int y);
-void		draw_sphere(t_img_data *data, t_cam_info *info, t_sphere2 *sphere);
+void		draw_vertical_line(t_img_data data, int x);
+void		drwa_horizontal_line(t_img_data data, int y);
+void		draw_sphere(t_img_data data, t_cam_info info, t_sphere2 sphere);
+void		draw_sphere2(t_img_data data, t_cam_info info, t_sphere2 sphere);
 
 //Ray Image
-void		create_render_image(t_img_data *data, t_cam_info *info);
-t_cam_info	*init_cam_info(double w, double h, double fl);
-t_cam		*init_cam_struct(t_cam_info *info, t_vector *origin);
-t_cam_info	*init_cam_info(double w, double h, double fl);
-int			atribute_color_to_ray(t_ray *ray);
-void		free_cam(t_cam *visual, int is_origin_free);
-t_ray		*render_ray(int x, int y, t_cam	*visual);
+void		create_render_image(t_img_data data, t_cam_info info);
+t_cam_info	init_cam_info(double w, double h, double fl);
+t_cam		init_cam_struct(t_cam_info info, t_vector origin);
+int			atribute_color_to_ray(t_ray ray);
+t_ray		render_ray(int x, int y, t_cam	visual);
 
 #endif

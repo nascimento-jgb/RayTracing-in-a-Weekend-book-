@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 09:13:49 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/15 13:06:54 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 10:33:34 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,20 @@ void	mlx_draw_by_img_data(t_mlx_data *prog, t_img_data *data)
 	}
 }
 
-int	mlx_exec(t_img_data *data, char *name)
+int	mlx_exec(t_img_data *image, char *name)
 {
 	t_mlx_ptrs	init;
 	t_mlx_data	*new;
 
 	init.mlx_ptr = mlx_init();
-	init.win_ptr = mlx_new_window(init.mlx_ptr, data->img_width,
-			data->img_height, name);
+	init.win_ptr = mlx_new_window(init.mlx_ptr, image->img_width,
+			image->img_height, name);
 	new = (t_mlx_data *)malloc(sizeof(t_mlx_data));
-	if (!new)
-		return (1);
-	new->img_ptr = mlx_new_image(init.mlx_ptr, data->img_width,
-			data->img_height);
-	new->addr = mlx_get_data_addr(new->img_ptr, &new->bpp,
-			&new->size_l, &new->endian);
-	mlx_draw_by_img_data(new, data);
+	new->img_ptr = mlx_new_image(init.mlx_ptr, image->img_width,
+			image->img_height);
+	new->addr = mlx_get_data_addr(new->img_ptr, &(new->bpp),
+			&(new->size_l), &(new->endian));
+	mlx_draw_by_img_data(new, image);
 	mlx_put_image_to_window(init.mlx_ptr, init.win_ptr, new->img_ptr, 0, 0);
 	mlx_destroy_image(init.mlx_ptr, new->img_ptr);
 	mlx_hook(init.win_ptr, 2, 1L << 0, mlx_key_handle, 0);
