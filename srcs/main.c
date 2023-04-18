@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 10:16:04 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:27:07 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minirt_mlx.h"
-#include "../includes/parser.h"
+#include "minirt_mlx.h"
+#include "parser.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>

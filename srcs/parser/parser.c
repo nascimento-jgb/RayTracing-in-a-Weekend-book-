@@ -6,13 +6,13 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:29:14 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/17 12:39:39 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/18 12:27:38 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
-#include "../../includes/parser.h"
+#include "parser.h"
 
 static void	error(size_t elem_count)
 {

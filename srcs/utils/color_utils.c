@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   color_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:36:17 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 10:11:57 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:27:38 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt_struct.h"
-#include "../../includes/minirt_mlx.h"
+#include "minirt_struct.h"
+#include "minirt_mlx.h"
 
 int	get_color_val(t_vector color)
 {
