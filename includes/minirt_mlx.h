@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:49:04 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 10:27:08 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 14:55:07 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_mlx_data
 
 typedef struct s_img_data
 {
+	double	aspect_ratio;
 	int		img_height;
 	int		img_width;
 	int		**ref;
@@ -72,6 +73,7 @@ t_vector	get_color(int rgb);
 
 // Img data utils
 t_img_data	*create_img_data(int width, int height);
+void		free_all(t_img_data *data, t_sky_info *info, t_sphere2 *s);
 
 // mlx utils
 int			exit_program(void);

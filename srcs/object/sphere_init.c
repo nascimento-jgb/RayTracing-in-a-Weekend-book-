@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:21:40 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 10:57:09 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 14:58:37 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ t_sphere2	*init_sphere(t_vector center, double radius)
 {
 	t_sphere2	*new;
 
-	new = NULL;
+	new = (t_sphere2 *)malloc(sizeof(t_sphere2));
+	if (!new)
+		return (NULL);
 	new->center = center;
 	new->radius = radius;
 	return (new);

@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 11:29:49 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 14:59:51 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,20 @@ int	main(void)
 {
 	t_img_data	*image;
 	t_sky_info	*visual_info;
-	// t_sphere2	*sphere;
-	double		aspect_ratio;
+	t_sphere2	*sphere;
 
 	// int	scene_file = open("test.rt", O_RDONLY);
 	// t_scene	*scene = parse_scene_file(scene_file);
 	// print_scene_values(scene);
-	aspect_ratio = 16.0 / 9.0;
-	image = create_img_data(1280, (int)(1280 / aspect_ratio));
-	visual_info = init_sky_info(2.0 * aspect_ratio, 2.0, 1.0);
+	image = create_img_data(1280, 720);
+	visual_info = init_sky_info(2.0 * (image->aspect_ratio), 2.0, 1.0);
 	// draw_image(image); // gradient draw
 	create_sky_image(image, visual_info);
-	// sphere = init_sphere(vec_create(0, 0, -1), 0.5);
-	// draw_sphere(image, visual_info, sphere);
+	sphere = init_sphere((t_vector){0, 0, -1}, 0.5);
+	draw_sphere(image, visual_info, sphere);
 	mlx_exec(image, "miniRT");
-	free(visual_info);
 	free(image);
+	free(visual_info);
+	free(sphere);
 	return (0);
 }
