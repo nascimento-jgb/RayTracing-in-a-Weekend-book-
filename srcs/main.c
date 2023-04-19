@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 14:59:51 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:08:17 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ int	main(void)
 	visual_info = init_sky_info(2.0 * (image->aspect_ratio), 2.0, 1.0);
 	// draw_image(image); // gradient draw
 	create_sky_image(image, visual_info);
+	// sphere = init_sphere((t_vector){0, 0, -1}, 0.5);
+	// draw_sphere(image, visual_info, sphere);
 	sphere = init_sphere((t_vector){0, 0, -1}, 0.5);
-	draw_sphere(image, visual_info, sphere);
+	draw_sphere2(image, visual_info, sphere);
 	mlx_exec(image, "miniRT");
-	free(image);
-	free(visual_info);
-	free(sphere);
+	free_all(image, visual_info, sphere);
 	return (0);
 }

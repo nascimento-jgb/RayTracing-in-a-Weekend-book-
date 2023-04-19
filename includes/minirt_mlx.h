@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:49:04 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 14:55:07 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 15:28:43 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void		draw_image(t_img_data *data);
 void		draw_vertical_line(t_img_data data, int x);
 void		draw_horizontal_line(t_img_data data, int y);
 void		draw_sphere(t_img_data *data, t_sky_info *info, t_sphere2 *sphere);
-// void		draw_sphere2(t_img_data data, t_sky_info info, t_sphere2 sphere);
+void		draw_sphere2(t_img_data *data, t_sky_info *info, t_sphere2 *sphere);
 
 //Ray Image
 t_sky_info	*init_sky_info(double w, double h, double fl);

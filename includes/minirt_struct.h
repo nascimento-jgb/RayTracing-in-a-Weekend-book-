@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:38:56 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 10:21:30 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 15:32:55 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,12 @@ t_vector	vec_div_scalar_apply(t_vector vecA, double c);
 t_vector	vec_unit_apply(t_vector vecA);
 
 //Ray
-// t_ray		*new_ray(t_vector orig, t_vector dir);
-t_vector	ray_at(t_ray ray, double t);
+t_vector	ray_at(t_ray *ray, double t);
 
 //Sphere
 int			ray_hit_sphere(t_sphere2 *sphere, t_ray *ray);
-// int		ray_hit_sphere2(t_sphere2 sphere, t_ray ray);
+double		ray_hit_sphere2(t_sphere2 *sphere, t_ray *ray);
 t_sphere2	*init_sphere(t_vector center, double radius);
-// int		atribute_color_to_ray2(t_ray ray, t_sphere2 sphere);
+int			atribute_color_to_ray2(t_sphere2 *sphere, t_ray *ray);
 
 #endif
