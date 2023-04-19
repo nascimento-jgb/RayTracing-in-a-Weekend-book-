@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:21:40 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 15:00:28 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 07:55:55 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_sphere2	*init_sphere(t_vector center, double radius)
 	return (new);
 }
 
-int	ray_hit_sphere(t_sphere2 sphere, t_ray ray)
+int	ray_hit_sphere(t_sphere2 *sphere, t_ray *ray)
 {
 	t_vector	oc;
 	double		a;
@@ -30,10 +30,10 @@ int	ray_hit_sphere(t_sphere2 sphere, t_ray ray)
 	double		c;
 	double		discriminant;
 
-	oc = subtract_two_vectors(ray.origin, sphere.center);
-	a = dot_product_vectors(ray.direction, ray.direction);
-	b = dot_product_vectors(oc, ray.direction) * 2.0;
-	c = dot_product_vectors(oc, oc) - (sphere.radius * sphere.radius);
+	oc = subtract_two_vectors(ray->origin, sphere->center);
+	a = dot_product_vectors(ray->direction, ray->direction);
+	b = dot_product_vectors(oc, ray->direction) * 2.0;
+	c = dot_product_vectors(oc, oc) - (sphere->radius * sphere->radius);
 	discriminant = (b * b) - (4 * a * c);
 	if (discriminant > 0)
 		return (1);
@@ -41,30 +41,30 @@ int	ray_hit_sphere(t_sphere2 sphere, t_ray ray)
 		return (0);
 }
 
-void	draw_sphere(t_img_data data, t_cam_info info, t_sphere2 sphere)
+void	draw_sphere(t_img_data *data, t_cam_info *info, t_sphere2 *sphere)
 {
-	t_cam		visual;
-	t_ray		ray;
+	t_cam		*visual;
+	t_ray		*ray;
 	t_vector	color;
 	int			i;
 	int			j;
 
-	visual = init_cam_struct(info, data);
+	visual = init_cam_struct(info);
 	color = vec_create(1, 1, 0);
-	j = data.img_height;
+	j = data->img_height;
 	while (--j >= 0)
 	{
 		i = -1;
-		while (++i < data.img_width)
+		while (++i < data->img_width)
 		{
-			ray = render_ray(i, j, visual);
+			ray = render_ray(i, j, visual, data);
 			if (ray_hit_sphere(sphere, ray))
-				data.ref[i][j] = get_color_val(color);
+				data->ref[i][j] = get_color_val(color);
 		}
 	}
 }
 
-//Functions to draw coloraccordingly to normalized vector after hitting the sphere
+//Functions to draw color accordingly to normalized vector after hitting the sphere
 
 // int	ray_hit_sphere2(t_sphere2 sphere, t_ray ray)
 // {

@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:49:04 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 14:58:04 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 07:54:18 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ typedef struct s_cam_info
 
 typedef struct s_cam
 {
-	t_img_data	*img;
 	t_vector	origin;
 	t_vector	horizontal;
 	t_vector	vertical;
@@ -70,7 +69,7 @@ int			get_color_sample_gamma(t_vector color);
 t_vector	get_color(int rgb);
 
 // Img data utils
-t_img_data	create_img_data(int width, int height);
+t_img_data	*create_img_data(int width, int height);
 
 // mlx utils
 int			exit_program(void);
@@ -82,14 +81,14 @@ int			mlx_exec(t_img_data *data, char *name);
 void		draw_image(t_img_data *data);
 void		draw_vertical_line(t_img_data data, int x);
 void		draw_horizontal_line(t_img_data data, int y);
-void		draw_sphere(t_img_data data, t_cam_info info, t_sphere2 sphere);
+void		draw_sphere(t_img_data *data, t_cam_info *info, t_sphere2 *sphere);
 // void		draw_sphere2(t_img_data data, t_cam_info info, t_sphere2 sphere);
 
 //Ray Image
-void		create_render_image(t_img_data data, t_cam_info info);
-t_cam_info	init_cam_info(double w, double h, double fl);
-t_cam		init_cam_struct(t_cam_info info, t_img_data data);
-int			atribute_color_to_ray(t_ray ray);
-t_ray		render_ray(int x, int y, t_cam	visual);
+t_cam_info	*init_cam_info(double w, double h, double fl);
+void		create_render_image(t_img_data *data, t_cam_info *info);
+t_cam		*init_cam_struct(t_cam_info *info);
+int			atribute_color_to_ray(t_ray *ray);
+t_ray		*render_ray(int x, int y, t_cam *visual, t_img_data *data);
 
 #endif
