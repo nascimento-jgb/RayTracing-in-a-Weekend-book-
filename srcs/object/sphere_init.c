@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:21:40 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 07:55:55 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:24:52 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,23 @@ int	ray_hit_sphere(t_sphere2 *sphere, t_ray *ray)
 		return (0);
 }
 
-void	draw_sphere(t_img_data *data, t_cam_info *info, t_sphere2 *sphere)
+void	draw_sphere(t_img_data *data, t_sky_info *info, t_sphere2 *sphere)
 {
-	t_cam		*visual;
+	t_sky		*new_sky;
 	t_ray		*ray;
 	t_vector	color;
 	int			i;
 	int			j;
 
-	visual = init_cam_struct(info);
-	color = vec_create(1, 1, 0);
+	new_sky = init_sky_struct(data, info);
+	color = (t_vector){1, 1, 0};
 	j = data->img_height;
 	while (--j >= 0)
 	{
 		i = -1;
 		while (++i < data->img_width)
 		{
-			ray = render_ray(i, j, visual, data);
+			ray = render_ray(i, j, new_sky);
 			if (ray_hit_sphere(sphere, ray))
 				data->ref[i][j] = get_color_val(color);
 		}
@@ -85,15 +85,15 @@ void	draw_sphere(t_img_data *data, t_cam_info *info, t_sphere2 *sphere)
 // 		return ((-b * sqrt(discriminant)) / (2.0 * a));
 // }
 
-// void	draw_sphere2(t_img_data data, t_cam_info info, t_sphere2 sphere)
+// void	draw_sphere2(t_img_data data, t_sky_info info, t_sphere2 sphere)
 // {
-// 	t_cam		visual;
+// 	t_sky		visual;
 // 	t_ray		ray;
 // 	t_vector	color;
 // 	int			i;
 // 	int			j;
 
-// 	visual = init_cam_struct(info, vec_create(0, 0, 0));
+// 	visual = init_sky_struct(info, vec_create(0, 0, 0));
 // 	visual.img = data;
 // 	color = vec_create(1, 1, 0);
 // 	j = data.img_height;

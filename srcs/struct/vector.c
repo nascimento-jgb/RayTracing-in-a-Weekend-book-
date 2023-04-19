@@ -6,21 +6,11 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 10:40:06 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/18 15:37:43 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:02:57 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_struct.h"
-
-t_vector	vec_create(double x, double y, double z)
-{
-	t_vector	vec;
-
-	vec.x = x;
-	vec.y = y;
-	vec.z = z;
-	return (vec);
-}
 
 t_vector	negative_of_vec(t_vector vec)
 {

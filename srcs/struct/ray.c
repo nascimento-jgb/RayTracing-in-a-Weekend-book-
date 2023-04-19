@@ -6,38 +6,40 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:03:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 08:05:49 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:31:32 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_mlx.h"
 
-t_ray	*new_ray(t_vector orig, t_vector dir)
+// t_ray	*new_ray(t_vector orig, t_vector dir)
+// {
+// 	t_ray	*new_ray;
+
+// 	new_ray = (t_ray *)malloc(sizeof(t_ray));
+// 	new_ray->origin = orig;
+// 	new_ray->direction = dir;
+// 	return (new_ray);
+// }
+
+
+t_ray	*render_ray(int x, int y, t_sky *visual)
 {
-	t_ray	*new_ray;
-
-	new_ray = (t_ray *)malloc(sizeof(t_ray));
-	new_ray->origin = orig;
-	new_ray->direction = dir;
-	return (new_ray);
-}
-
-
-t_ray	*render_ray(int x, int y, t_cam *visual, t_img_data *data)
-{
-	t_ray		*ray;
+	t_ray		*res;
 	t_vector	aux;
 	t_vector	aux2;
 
+	res = ft_calloc(1, sizeof(t_ray));
 	aux = vec_mul_scalar(visual->horizontal,
-			(double)x / (data->img_width - 1));
+			(double)x / (visual->data->img_width - 1));
 	aux2 = vec_mul_scalar(visual->vertical,
-			(double)y / (data->img_height - 1));
+			(double)y / (visual->data->img_height - 1));
 	vec_add_apply(aux, aux2);
 	vec_add_apply(aux, visual->lower_left_corner);
 	vec_sub_apply(aux, visual->origin);
-	ray = new_ray(visual->origin, aux);
-	return (ray);
+	res->origin = visual->origin;
+	res->direction = aux;
+	return (res);
 }
 
 t_vector	ray_at(t_ray ray, double t)

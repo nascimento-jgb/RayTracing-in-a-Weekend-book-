@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:38:56 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 07:55:03 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:21:30 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_sphere2
 
 
 //Vector
-t_vector	vec_create(double x, double y, double z);
 t_vector	negative_of_vec(t_vector vec);
 t_vector	vec_mul_scalar(t_vector vec, double num);
 double		vec_lenght_squared(t_vector vec);
@@ -59,7 +58,7 @@ t_vector	vec_div_scalar_apply(t_vector vecA, double c);
 t_vector	vec_unit_apply(t_vector vecA);
 
 //Ray
-t_ray		*new_ray(t_vector orig, t_vector dir);
+// t_ray		*new_ray(t_vector orig, t_vector dir);
 t_vector	ray_at(t_ray ray, double t);
 
 //Sphere

@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 08:32:04 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/07 14:29:02 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:43:25 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_vector
 	float	k;
 }	t_vector;
 
-t_vector	*vec_create(float x, float y, float z);
 t_vector	*negative_of_vec(t_vector *vec);
 double		vec_lenght_squared(t_vector *vec);
 double		vec_magnitude_calc(t_vector *vec);

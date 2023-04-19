@@ -6,7 +6,7 @@
 #    By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 09:05:28 by jonascim          #+#    #+#              #
-#    Updated: 2023/04/18 15:01:59 by jonascim         ###   ########.fr        #
+#    Updated: 2023/04/19 10:44:45 by jonascim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ UTILS_DIR	:= srcs/utils/
 
 SRC_FILES		=	main.c
 
-OBJ_FILES		=	render_image.c	sphere_init.c
+OBJ_FILES		=	sky_image.c	sphere_init.c
 
 PARS_FILES		=	parser.c		parser_utils.c		parser_camera.c parser_ambient.c \
 					parser_light.c	parser_sphere.c		parser_plane.c	parser_cylinder.c
