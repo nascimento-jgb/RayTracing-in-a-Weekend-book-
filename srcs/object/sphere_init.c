@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:21:40 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 10:24:52 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:57:09 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	draw_sphere(t_img_data *data, t_sky_info *info, t_sphere2 *sphere)
 			ray = render_ray(i, j, new_sky);
 			if (ray_hit_sphere(sphere, ray))
 				data->ref[i][j] = get_color_val(color);
+			free(ray);
 		}
 	}
 }

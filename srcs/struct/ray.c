@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:03:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 10:31:32 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 14:41:09 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,15 @@ t_ray	*render_ray(int x, int y, t_sky *visual)
 			(double)x / (visual->data->img_width - 1));
 	aux2 = vec_mul_scalar(visual->vertical,
 			(double)y / (visual->data->img_height - 1));
-	vec_add_apply(aux, aux2);
-	vec_add_apply(aux, visual->lower_left_corner);
-	vec_sub_apply(aux, visual->origin);
+	aux = vec_add_apply(aux, aux2);
+	aux = vec_add_apply(aux, visual->lower_left_corner);
+	aux = vec_sub_apply(aux, visual->origin);
 	res->origin = visual->origin;
 	res->direction = aux;
 	return (res);
+
+
+	//try to print the address of the return of every aux
 }
 
 t_vector	ray_at(t_ray ray, double t)

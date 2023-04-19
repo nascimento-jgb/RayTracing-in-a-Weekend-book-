@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:43:41 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 10:44:43 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/19 14:43:50 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	atribute_color_to_ray(t_ray *ray)
 	t = 0.5 * (aux.y + 1.0);
 	aux = vec_mul_scalar_apply((t_vector){1, 1, 1}, 1.0 - t);
 	aux2 = vec_mul_scalar_apply((t_vector){0.5, 0.7, 1}, t);
-	vec_add_apply(aux, aux2);
+	aux = vec_add_apply(aux, aux2);
 	return (get_color_val(aux));
 }
 
@@ -70,21 +70,20 @@ t_sky	*init_sky_struct(t_img_data *data, t_sky_info *info)
 	t_sky		*res;
 	t_vector	aux;
 	t_vector	aux2;
-	t_vector	aux3;
 
 	res = ft_calloc(1, sizeof(t_sky));
 	res->data = data;
 	res->origin = (t_vector){0, 0, 0};
 	res->horizontal = (t_vector){info->viewport_width, 0, 0};
 	res->vertical = (t_vector){0, info->viewport_height, 0};
-	vec_div_scalar_apply(res->horizontal, 2.0);
-	vec_div_scalar_apply(res->vertical, 2.0);
+	res->horizontal = vec_div_scalar_apply(res->horizontal, 2.0);
+	res->vertical = vec_div_scalar_apply(res->vertical, 2.0);
 	aux = add_two_vectors(res->horizontal, res->vertical);
 	aux2 = (t_vector){0, 0, info->focal_lenght};
-	aux3 = add_two_vectors(aux, aux2);
-	res->lower_left_corner = subtract_two_vectors((t_vector){0, 0, 0}, aux3);
-	vec_mul_scalar_apply(res->horizontal, 2.0);
-	vec_mul_scalar_apply(res->vertical, 2.0);
+	aux = vec_add_apply(aux, aux2);
+	res->lower_left_corner = subtract_two_vectors((t_vector){0, 0, 0}, aux);
+	res->horizontal = vec_mul_scalar_apply(res->horizontal, 2.0);
+	res->vertical = vec_mul_scalar_apply(res->vertical, 2.0);
 	return (res);
 }
 
@@ -104,6 +103,8 @@ void	create_sky_image(t_img_data *data, t_sky_info *info)
 		{
 			ray = render_ray(i, j, new_sky);
 			data->ref[i][j] = atribute_color_to_ray(ray);
+			free(ray);
 		}
 	}
+	free(new_sky);
 }
