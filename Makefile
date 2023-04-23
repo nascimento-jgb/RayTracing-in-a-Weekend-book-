@@ -6,7 +6,7 @@
 #    By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 09:05:28 by jonascim          #+#    #+#              #
-#    Updated: 2023/04/22 11:51:22 by jonascim         ###   ########.fr        #
+#    Updated: 2023/04/23 15:17:22 by jonascim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,11 @@ PARS_DIR	:= srcs/parser/
 STRUCT_DIR	:= srcs/struct/
 UTILS_DIR	:= srcs/utils/
 
-SRC_FILES		=	main.c
+SRC_FILES		:=	main.c
 
 OBJ_FILES		=	sphere_init.c	sphere_hit.c	draw_hittable.c
 
-PARS_FILES		=	parser.c		parser_utils.c		parser_camera.c parser_ambient.c \
+PARS_FILES		:=	parser.c		parser_utils.c		parser_camera.c parser_ambient.c \
 					parser_light.c	parser_sphere.c		parser_plane.c	parser_cylinder.c
 
 STRUCT_FILES	=	ray.c	vector.c	vector2.c	vector3.c	cam.c	hit_record.c
@@ -36,11 +36,11 @@ STRUCT_FILES	=	ray.c	vector.c	vector2.c	vector3.c	cam.c	hit_record.c
 UTILS_FILES		=	calc_utils.c	color_utils.c	draw_utils.c	img_data_utils.c \
 					mlx_utils.c		hitlst_utils.c	hitlst_info_utils.c
 
-SRC 		= 	$(addprefix $(SRC_DIR), $(SRC_FILES))
-OBJ 		= 	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
-PARS 		= 	$(addprefix $(PARS_DIR), $(PARS_FILES))
-STRUCT 		= 	$(addprefix $(STRUCT_DIR), $(STRUCT_FILES))
-UTILS 		= 	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
+SRC 		:= 	$(addprefix $(SRC_DIR), $(SRC_FILES))
+OBJ 		:= 	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
+PARS 		:= 	$(addprefix $(PARS_DIR), $(PARS_FILES))
+STRUCT 		:= 	$(addprefix $(STRUCT_DIR), $(STRUCT_FILES))
+UTILS 		:= 	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 all:		$(NAME)
 
