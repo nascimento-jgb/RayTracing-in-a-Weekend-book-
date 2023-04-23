@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 08:54:07 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 14:55:11 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/20 09:18:06 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_img_data	*create_img_data(int width, int height)
 	return (new);
 }
 
-void	free_all(t_img_data *data, t_sky_info *info, t_sphere2 *s)
+void	free_all(t_img_data *data, t_cam_info *info, t_sphere2 *s)
 {
 	free(data);
 	free(info);

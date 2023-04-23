@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:38:56 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 15:32:55 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/22 11:54:56 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_vector	vec_unit_apply(t_vector vecA);
 
 //Ray
 t_vector	ray_at(t_ray *ray, double t);
+int			atribute_color_to_ray(t_ray *ray);
 
 //Sphere
 int			ray_hit_sphere(t_sphere2 *sphere, t_ray *ray);

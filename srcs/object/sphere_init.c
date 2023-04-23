@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:21:40 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 16:25:55 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/22 12:17:37 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ int	ray_hit_sphere(t_sphere2 *sphere, t_ray *ray)
 		return (0);
 }
 
-void	draw_sphere(t_img_data *data, t_sky_info *info, t_sphere2 *sphere)
+void	draw_sphere(t_img_data *data, t_cam_info *info, t_sphere2 *sphere)
 {
-	t_sky		*new_sky;
+	t_cam		*new_sky;
 	t_ray		*ray;
 	t_vector	color;
 	int			i;
 	int			j;
 
-	new_sky = init_sky_struct(data, info);
+	new_sky = init_cam_struct(data, info);
 	color = (t_vector){1, 1, 0};
 	j = data->img_height;
 	while (--j >= 0)
@@ -88,14 +88,14 @@ double	ray_hit_sphere2(t_sphere2 *sphere, t_ray *ray)
 		return ((half_b * (-1) - sqrt(discriminant)) / a);
 }
 
-void	draw_sphere2(t_img_data *data, t_sky_info *info, t_sphere2 *sphere)
+void	draw_sphere2(t_img_data *data, t_cam_info *info, t_sphere2 *sphere)
 {
-	t_sky		*new_sky;
+	t_cam		*new_sky;
 	t_ray		*ray;
 	int			i;
 	int			j;
 
-	new_sky = init_sky_struct(data, info);
+	new_sky = init_cam_struct(data, info);
 	j = data->img_height;
 	while (--j >= 0)
 	{

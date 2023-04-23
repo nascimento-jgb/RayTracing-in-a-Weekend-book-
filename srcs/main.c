@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 16:08:17 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/23 13:00:22 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,21 +69,29 @@
 int	main(void)
 {
 	t_img_data	*image;
-	t_sky_info	*visual_info;
+	t_cam_info	*visual_info;
 	t_sphere2	*sphere;
+	t_list		*hit_lst;
+	t_cam		*cam;
 
 	// int	scene_file = open("test.rt", O_RDONLY);
 	// t_scene	*scene = parse_scene_file(scene_file);
 	// print_scene_values(scene);
 	image = create_img_data(1280, 720);
-	visual_info = init_sky_info(2.0 * (image->aspect_ratio), 2.0, 1.0);
+	visual_info = init_cam_info(2.0 * (image->aspect_ratio), 2.0, 1.0);
+	cam = init_cam_struct(image, visual_info);
 	// draw_image(image); // gradient draw
-	create_sky_image(image, visual_info);
-	// sphere = init_sphere((t_vector){0, 0, -1}, 0.5);
-	// draw_sphere(image, visual_info, sphere);
+	// create_sky_image(image, visual_info); //blue and white blending gradient draw
+	hit_lst = hitlst_new();
+	// sphere = init_sphere((t_vector){0, -105.1, -1}, 100);
 	sphere = init_sphere((t_vector){0, 0, -1}, 0.5);
-	draw_sphere2(image, visual_info, sphere);
+	hitlst_add(hit_lst, (void *)sphere, OBJ_SPHERE);
+	hittable_draw(cam, hit_lst);
+	// draw_sphere(image, visual_info, sphere);
+	// sphere = init_sphere((t_vector){0, 0, -1}, 0.5);
+	// draw_sphere2(image, visual_info, sphere);
 	mlx_exec(image, "miniRT");
 	free_all(image, visual_info, sphere);
+	free(hit_lst);
 	return (0);
 }

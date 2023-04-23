@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   hitlst_info_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 09:31:49 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/19 09:28:21 by jonascim         ###   ########.fr       */
+/*   Created: 2023/04/20 13:11:05 by jonascim          #+#    #+#             */
+/*   Updated: 2023/04/23 14:45:45 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-# define RAY_H
+#include "minirt_mlx.h"
 
-# include "vector.h"
-
-typedef struct s_point
+t_hitlst_info	*hitlst_info_new(t_ray *ray)
 {
-	double	x;
-	double	y;
-	double	z;
-}	t_point;
+	t_hitlst_info	*new;
 
-typedef struct s_ray
-{
-	t_point		*origin;
-	t_vector	*direction;
-}		t_ray;
-
-t_point		*new_point(double x, double y, double z);
-// t_ray		*new_ray(t_point *orig, t_vector *dir);
-t_vector	*ray_at(t_ray *ray, double t);
-
-#endif
+	new = (t_hitlst_info *)malloc(sizeof(t_hitlst_info));
+	if (!new)
+		return (NULL);
+	new->ray = ray;
+	new->t_min = 0.001;
+	new->t_max = INFINITY;
+	new->rec = hit_record_new();
+	return (new);
+}

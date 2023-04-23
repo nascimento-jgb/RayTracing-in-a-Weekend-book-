@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:29:14 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/18 12:27:38 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/23 13:23:27 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_scene_data	*parse_scene_file(int fd)
 	const char		*elem = get_next_line(fd);
 	t_scene_data	*scene;
 
-	scene = ft_calloc(1, sizeof(t_scene_data));
+	scene = ft_calloc(1, sizeof(t_scene_data *));
 	if (!scene)
 		return (NULL);
 	while (elem != NULL)
