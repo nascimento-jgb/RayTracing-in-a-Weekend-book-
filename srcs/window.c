@@ -6,7 +6,7 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:17:40 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/24 16:56:44 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/24 17:53:11 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,21 @@
 
 #include "window.h"
 
-static int	exit_program(void)
+#define X_DESTROY	17
+
+static int	exit_program(void *param)
 {
+	const t_window	*window = param;
+
+	mlx_destroy_window(window->mlx_ptr, window->win_ptr);
 	exit(0);
 	return (0);
 }
 
-static int	mlx_key_handle(int keycode)
+static int	key_hook(int keycode, void *param)
 {
 	if (keycode == 53)
-		return (exit_program());
+		exit_program(param);
 	return (0);
 }
 
@@ -38,7 +43,7 @@ int	init_mlx_window(t_window *window, char *name, int width, int height)
 	window->win_ptr = mlx_new_window(window->mlx_ptr, width, height, name);
 	if (!window->win_ptr)
 		return (-1);
-	mlx_hook(window->win_ptr, 2, 1L << 0, mlx_key_handle, 0);
-	mlx_hook(window->win_ptr, 17, 1L << 17, exit_program, 0);
+	mlx_key_hook(window->win_ptr, key_hook, window);
+	mlx_hook(window->win_ptr, X_DESTROY, 0L, exit_program, window);
 	return (0);
 }
