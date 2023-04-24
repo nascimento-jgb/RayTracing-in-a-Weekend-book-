@@ -6,7 +6,7 @@
 #    By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 09:05:28 by jonascim          #+#    #+#              #
-#    Updated: 2023/04/24 13:51:01 by helneff          ###   ########.fr        #
+#    Updated: 2023/04/24 14:27:37 by helneff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ PARSER_DIR	:= srcs/parser/
 STRUCT_DIR	:= srcs/struct/
 UTILS_DIR	:= srcs/utils/
 
-SRC_FILES		:=	main.c
+SRC_FILES		:=	main.c window.c
 
 # OBJ_FILES		:=	sphere_init.c	sphere_hit.c	draw_hittable.c		plane_init.c \
 					plane_hit.c

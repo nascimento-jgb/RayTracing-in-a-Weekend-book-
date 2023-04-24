@@ -6,7 +6,7 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 14:05:47 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/24 14:35:02 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 #include <stdio.h>
 #include <fcntl.h>
 
+#include <mlx.h>
+
 #include "parser.h"
+#include "window.h"
+
+#define IMG_WIDTH	1280
+#define IMG_HEIGHT	720
 
 static void	print_scene_values(t_scene_data *scene)
 {
@@ -70,10 +76,13 @@ int	main(void)
 {
 	int				scene_file;
 	t_scene_data	*scene;
+	t_window		*window;
 
 	scene_file = open("test.rt", O_RDONLY);
 	scene = parse_scene_file(scene_file);
 	print_scene_values(scene);
+	window = create_window("MiniRT", IMG_WIDTH, IMG_HEIGHT);
+	mlx_loop(window->mlx_ptr);
 	free_scene(scene);
 	return (0);
 }
