@@ -1,103 +1,44 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/28 11:04:55 by jonascim          #+#    #+#              #
-#    Updated: 2022/12/06 14:48:46 by jonascim         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = libft.a
+COMPILE_FLAGS = -Wall -Wextra -Werror
+CORE = \
+	ft_isalpha.c	ft_isdigit.c	ft_isalnum.c		ft_isascii.c \
+	ft_isprint.c	ft_strlen.c		ft_memset.c			ft_bzero.c \
+	ft_memcpy.c		ft_memmove.c	ft_strlcpy.c		ft_strlcat.c \
+	ft_toupper.c	ft_tolower.c	ft_strchr.c			ft_strrchr.c \
+	ft_strncmp.c	ft_memchr.c		ft_memcmp.c			ft_strnstr.c \
+	ft_atoi.c		ft_calloc.c		ft_strdup.c			ft_substr.c \
+	ft_strjoin.c	ft_strtrim.c	ft_split.c			ft_itoa.c \
+	ft_strmapi.c	ft_striteri.c	ft_putchar_fd.c		ft_putstr_fd.c \
+	ft_putendl_fd.c	ft_putnbr_fd.c
+BONUS = \
+	ft_lstnew_bonus.c		ft_lstadd_front_bonus.c	ft_lstsize_bonus.c	ft_lstlast_bonus.c \
+	ft_lstadd_back_bonus.c	ft_lstdelone_bonus.c	ft_lstclear_bonus.c	ft_lstiter_bonus.c \
+	ft_lstmap_bonus.c
+EXTRA = \
+	ft_min.c			ft_max.c			ft_digitsl.c	ft_digitsul.c \
+	ft_based_lltoa.c	ft_based_ulltoa.c	ft_utoa.c		ft_count.c \
+	ft_chrtostr.c		ft_strpad.c			ft_lstdellast.c ft_strsubst.c
+GNL = \
+	get_next_line/get_next_line.c
+PRINTF = \
+	ft_printf/ft_printf.c ft_printf/ft_arg_util.c	ft_printf/ft_parser.c	ft_printf/ft_writer.c
+SRC = $(CORE) $(BONUS) $(EXTRA) $(GNL) $(PRINTF)
+OBJ = $(SRC:.c=.o)
 
-#Standard
+.PHONY: all bonus clean fclean re
 
-NAME		=	libft.a
-INCLUDES	=	../includes
-SRCS_DIR 	=	src/
-OBJS_DIR	=	obj/
-CC			=	cc
-CFLAGS		=	-Wall -Werror -Wextra -I
-RM			=	rm -f
-AR			=	ar rcs
+all: $(NAME)
 
-#Sources
+$(NAME): $(notdir $(OBJ))
 
-FTIS_DIR	=	ft_is/
-FTIS		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint
-
-FTMEM_DIR	=	ft_mem/
-FTMEM		=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove ft_memset
-
-FTPUT_DIR	=	ft_put/
-FTPUT		=	ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd
-
-FTTO_DIR	=	ft_to/
-FTTO		=	ft_atoi ft_itoa ft_tolower ft_toupper
-
-FTSTR_DIR	=	ft_str/
-FTSTR		=	ft_split ft_strchr ft_strdup ft_striteri ft_strjoin \
-				ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp \
-				ft_strnstr ft_strrchr ft_strtrim ft_substr
-
-FTLST_DIR	=	ft_lst/
-FTLST		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
-				ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize
-
-FTPRINTF_DIR	=	ft_printf/
-FTPRINTF		=	ft_hex_utils ft_printf_utils ft_printf ft_ptr_utils \
-				ft_unsigned_utils
-
-FTNGL_DIR	=	get_next_line/
-FTGNL		=	get_next_line_utils get_next_line
-
-SRC_FILES+=$(addprefix $(FTIS_DIR),$(FTIS))
-SRC_FILES+=$(addprefix $(FTMEM_DIR),$(FTMEM))
-SRC_FILES+=$(addprefix $(FTPUT_DIR),$(FTPUT))
-SRC_FILES+=$(addprefix $(FTTO_DIR),$(FTTO))
-SRC_FILES+=$(addprefix $(FTSTR_DIR),$(FTSTR))
-SRC_FILES+=$(addprefix $(FTLST_DIR),$(FTLST))
-SRC_FILES+=$(addprefix $(FTPRINTF_DIR),$(FTPRINTF))
-SRC_FILES+=$(addprefix $(FTNGL_DIR),$(FTGNL))
-
-
-SRCS 		= 	$(addprefix $(SRCS_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJS 		= 	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRC_FILES)))
-
-###
-
-OBJSF		=	.cache_exists
-
-all:		$(NAME)
-
-$(NAME):	$(OBJS)
-			@$(AR) $(NAME) $(OBJS)
-			@ranlib $(NAME)
-
-$(OBJS_DIR)%.o : $(SRCS_DIR)%.c | $(OBJSF)
-			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-
-$(OBJSF):
-			@mkdir -p $(OBJS_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTIS_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTMEM_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTPUT_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTTO_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTSTR_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTLST_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTPRINTF_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTNGL_DIR)
+$(OBJ): $(SRC)
+	cc -c $(COMPILE_FLAGS) $(SRC)
+	ar rcs $(NAME) $(notdir $(OBJ))
 
 clean:
-			@$(RM) -rf $(OBJS_DIR)
-			@$(RM) -f $(OBJSF)
+	rm -f $(notdir $(OBJ))
 
-fclean:		clean
-			@$(RM) -f $(NAME)
+fclean: clean
+	rm -f $(NAME)
 
-re:			fclean all
-
-norm:
-	@norminette $(SRCS) $(INCLUDES) | grep -v Norme -B1 || true
-
-.PHONY:		all clean fclean re norm
+re: fclean all
