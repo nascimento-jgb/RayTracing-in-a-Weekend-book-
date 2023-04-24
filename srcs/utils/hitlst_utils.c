@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 09:28:47 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 10:02:24 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:08:35 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	hitlst_hit(t_list *list, t_hitlst_info *info)
 		hittable->hit = sphere_hit(hittable->obj, info->ray, info, info->rec);
 		if (hittable->hit == TRUE)
 		{
-			//not entering in this section
 			hit_flag = TRUE;
 			info->t_max = info->rec->t;
 		}

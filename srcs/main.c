@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 10:05:21 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:11:19 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(void)
 	// draw_image(image); // gradient draw
 	// create_sky_image(image, visual_info); //blue and white blending gradient draw
 	hit_lst = hitlst_new();
-	sphere = init_sphere((t_vector){0, -105.1, -1}, 100);
+	sphere = init_sphere((t_vector){0, -100.5, -1}, 100);
 	hitlst_add(hit_lst, (void *)sphere, OBJ_SPHERE);
 	sphere = init_sphere((t_vector){0, 0, -1}, 0.5);
 	hitlst_add(hit_lst, (void *)sphere, OBJ_SPHERE);

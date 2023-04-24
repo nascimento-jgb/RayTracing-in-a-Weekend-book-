@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:06:16 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 10:03:23 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:12:56 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	hittable_draw(t_cam *cam, t_list *list)
 	double			i;
 	double			j;
 
-	y = cam->data->img_height - 1;
+	y = cam->data->img_height;
 	while (--y >= 0)
 	{
 		x = -1;

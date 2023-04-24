@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:43:41 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 10:02:01 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:08:53 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ t_ray	*camera_get_ray(t_cam *cam, double u, double v)
 	aux = vec_sub_apply(aux, cam->origin);
 	res->origin = cam->origin;
 	res->direction = aux;
-	// printf("Ray direction: x %f y %f z %f \n", res->direction.x, res->direction.y, res->direction.z);
 	return (res);
 }
 
