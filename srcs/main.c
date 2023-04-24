@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 10:56:35 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 12:51:00 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	main(void)
 	t_sphere	*sphere;
 	t_list		*hit_lst;
 	t_cam		*cam;
+	t_plane		*plane;
 
 	// int	scene_file = open("test.rt", O_RDONLY);
 	// t_scene	*scene = parse_scene_file(scene_file);
@@ -83,10 +84,14 @@ int	main(void)
 	// draw_image(image); // gradient draw
 	// create_sky_image(image, visual_info); //blue and white blending gradient draw
 	hit_lst = hitlst_new();
+	sphere = init_sphere((t_vector){-1, 0, -1}, 0.4);
+	hitlst_add(hit_lst, (void *)sphere, OBJ_SPHERE);
+	sphere = init_sphere((t_vector){1, 0, -1}, 0.4);
+	hitlst_add(hit_lst, (void *)sphere, OBJ_SPHERE);
 	sphere = init_sphere((t_vector){0, -100.5, -1}, 100);
 	hitlst_add(hit_lst, (void *)sphere, OBJ_SPHERE);
-	sphere = init_sphere((t_vector){0, 0, -1}, 0.5);
-	hitlst_add(hit_lst, (void *)sphere, OBJ_SPHERE);
+	plane = init_plane((t_vector){0, 0, 1}, (t_vector){1, 0.75, -1});
+	hitlst_add(hit_lst, (void *)plane, OBJ_PLANE);
 	hittable_draw(cam, hit_lst);
 	// draw_sphere(image, visual_info, sphere); //drawing without normals
 	// draw_sphere2(image, visual_info, sphere); //drawing with normal vectors

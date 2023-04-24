@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:38:56 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 10:57:37 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:37:58 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ typedef struct s_sphere
 	double		radius;
 }	t_sphere;
 
+typedef struct s_plane
+{
+	t_vector	normal;
+	t_vector	point;
+}	t_plane;
 
 //Vector
 t_vector	negative_of_vec(t_vector vec);
@@ -66,5 +71,8 @@ int			ray_hit_sphere(t_sphere *sphere, t_ray *ray);
 double		ray_hit_sphere2(t_sphere *sphere, t_ray *ray);
 t_sphere	*init_sphere(t_vector center, double radius);
 int			atribute_color_to_ray2(t_sphere *sphere, t_ray *ray);
+
+//Plane
+t_plane		*init_plane(t_vector normal, t_vector point);
 
 #endif

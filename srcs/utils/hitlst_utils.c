@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 09:28:47 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 10:08:35 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:54:08 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,31 @@ void	hitlst_add(t_list *list, void *obj, int obj_type)
 // 	free(list);
 // }
 
+// int	hitlst_hit(t_list *list, t_hitlst_info *info)
+// {
+// 	t_hittable	*hittable;
+// 	int			hit_flag;
+
+// 	hit_flag = FALSE;
+// 	while (list && list->content)
+// 	{
+// 		hittable = (t_hittable *)(list->content);
+// 		if (hittable->obj_type == OBJ_SPHERE)
+// 			hittable->hit = sphere_hit(hittable->obj, info->ray, info,
+// 					info->rec);
+// 		else if (hittable->obj_type == OBJ_PLANE)
+// 			hittable->hit = plane_hit(hittable->obj, info->ray, info,
+// 					info->rec);
+// 		if (hittable->hit == TRUE)
+// 		{
+// 			hit_flag = TRUE;
+// 			info->t_max = info->rec->t;
+// 		}
+// 		list = list->next;
+// 	}
+// 	return (hit_flag);
+// }
+
 int	hitlst_hit(t_list *list, t_hitlst_info *info)
 {
 	t_hittable	*hittable;
@@ -53,14 +78,21 @@ int	hitlst_hit(t_list *list, t_hitlst_info *info)
 	while (list && list->content)
 	{
 		hittable = (t_hittable *)(list->content);
-		hittable->hit = sphere_hit(hittable->obj, info->ray, info, info->rec);
-		if (hittable->hit == TRUE)
+		if (hittable->obj_type == OBJ_SPHERE && sphere_hit(hittable->obj, info->ray, info,
+					info->rec))
 		{
 			hit_flag = TRUE;
 			info->t_max = info->rec->t;
+			return (2);
+		}
+		else if (hittable->obj_type == OBJ_PLANE && plane_hit(hittable->obj, info->ray, info,
+					info->rec))
+		{
+			hit_flag = TRUE;
+			info->t_max = info->rec->t;
+			return (3);
 		}
 		list = list->next;
 	}
 	return (hit_flag);
 }
-
