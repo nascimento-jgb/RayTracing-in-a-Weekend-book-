@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+         #
+#    By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 09:05:28 by jonascim          #+#    #+#              #
-#    Updated: 2023/04/23 15:17:22 by jonascim         ###   ########.fr        #
+#    Updated: 2023/04/24 13:08:56 by helneff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		:= minirt
 LIBFT		:= libft
 INCLUDE		:= includes
 CC			:= cc
-CFLAGS		:= -Wall -Werror -Wextra
+CFLAGS		:= -Wall -Werror -Wextra -g -fsanitize=address
 MLXFLAGS	:= -framework OpenGL -framework AppKit
 RM			:= rm -f
 
@@ -46,7 +46,7 @@ all:		$(NAME)
 
 $(NAME):	$(SRC)
 			@make -C $(LIBFT)
-			@$(CC) $(CFLAGS) $(SRC) $(OBJ) $(PARS) $(STRUCT) $(UTILS) -o $(NAME) -I $(INCLUDE) -L. $(LIBFT)/libft.a -L. -lmlx $(MLXFLAGS)
+			@$(CC) $(CFLAGS) $(SRC) $(OBJ) $(PARS) $(STRUCT) $(UTILS) -o$(NAME) -I$(INCLUDE) -I$(LIBFT) -L$(LIBFT) -lft -lmlx $(MLXFLAGS)
 
 clean:
 			@make clean -C $(LIBFT)

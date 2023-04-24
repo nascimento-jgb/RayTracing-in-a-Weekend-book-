@@ -6,7 +6,7 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:29:59 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/17 12:38:23 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/24 12:41:26 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,16 +98,17 @@ typedef struct s_scene_data
 typedef int	(*t_parser)(t_scene_data *scene, const char *elem);
 
 t_scene_data	*parse_scene_file(int fd);
+void			free_scene(t_scene_data *scene);
 
-int		eat_whitespace(const char **elem);
-int		eat_comma(const char **elem);
-int		parse_num(const char **field, double *result);
+int				eat_whitespace(const char **elem);
+int				eat_comma(const char **elem);
+int				parse_num(const char **elem, double *result);
 
-int		parse_camera(t_scene_data *scene, const char *elem);
-int		parse_ambient(t_scene_data *scene, const char *elem);
-int		parse_light(t_scene_data *scene, const char *elem);
-int		parse_sphere(t_scene_data *scene, const char *elem);
-int		parse_plane(t_scene_data *scene, const char *elem);
-int		parse_cylinder(t_scene_data *scene, const char *elem);
+int				parse_camera(t_scene_data *scene, const char *elem);
+int				parse_ambient(t_scene_data *scene, const char *elem);
+int				parse_light(t_scene_data *scene, const char *elem);
+int				parse_sphere(t_scene_data *scene, const char *elem);
+int				parse_plane(t_scene_data *scene, const char *elem);
+int				parse_cylinder(t_scene_data *scene, const char *elem);
 
 #endif
