@@ -6,7 +6,7 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:17:43 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/24 14:29:16 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/24 16:10:01 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ typedef struct s_window
 	void	*win_ptr;
 }	t_window;
 
-t_window	*create_window(char *name, int width, int height);
+int	init_mlx_window(t_window *window, char *name, int width, int height);
 
 #endif

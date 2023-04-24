@@ -6,7 +6,7 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:29:59 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/24 13:57:29 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/24 16:28:37 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct s_scene_data
 
 typedef int	(*t_parser)(t_scene_data *scene, const char *elem);
 
-t_scene_data	*parse_scene_file(int fd);
+int				parse_scene_file(t_scene_data *scene, char *file_name);
 void			free_scene(t_scene_data *scene);
 
 int				eat_whitespace(const char **elem);

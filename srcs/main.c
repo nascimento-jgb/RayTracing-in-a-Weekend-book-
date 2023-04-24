@@ -6,15 +6,15 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 14:35:02 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/24 17:19:10 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <fcntl.h>
 
 #include <mlx.h>
+#include <libft.h>
 
 #include "parser.h"
 #include "window.h"
@@ -22,7 +22,7 @@
 #define IMG_WIDTH	1280
 #define IMG_HEIGHT	720
 
-static void	print_scene_values(t_scene_data *scene)
+static void	print_scene_values(const t_scene_data *scene)
 {
 	t_sphere_data	*sphere;
 	t_plane_data	*plane;
@@ -72,17 +72,23 @@ static void	print_scene_values(t_scene_data *scene)
 	printf("------------------------------------------\n");
 }
 
+static void	panic(int return_value, char *err_msg)
+{
+	ft_putendl_fd("Error", 2);
+	ft_putendl_fd(err_msg, 2);
+	exit(return_value);
+}
+
 int	main(void)
 {
-	int				scene_file;
-	t_scene_data	*scene;
-	t_window		*window;
+	static t_scene_data	scene;
+	static t_window		window;
 
-	scene_file = open("test.rt", O_RDONLY);
-	scene = parse_scene_file(scene_file);
-	print_scene_values(scene);
-	window = create_window("MiniRT", IMG_WIDTH, IMG_HEIGHT);
-	mlx_loop(window->mlx_ptr);
-	free_scene(scene);
+	if (parse_scene_file(&scene, "test.rt") == -1)
+		panic(1, "Failed to parse scene file");
+	if (init_mlx_window(&window, "MiniRT", IMG_WIDTH, IMG_HEIGHT) == -1)
+		panic(1, "Failed to initialize MLX window");
+	print_scene_values(&scene);
+	mlx_loop(window.mlx_ptr);
 	return (0);
 }

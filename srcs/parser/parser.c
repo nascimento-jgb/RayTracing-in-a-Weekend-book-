@@ -6,19 +6,15 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:29:14 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/24 14:39:48 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/24 17:14:26 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <fcntl.h>
 
 #include "libft.h"
 
 #include "parser.h"
-
-static void	error(size_t elem_count)
-{
-	ft_printf("Error\nFailed to parse elem #%d\n", elem_count);
-	exit(1);
-}
 
 static void	skip_identifier(const char **elem)
 {
@@ -28,15 +24,13 @@ static void	skip_identifier(const char **elem)
 		(*elem)++;
 }
 
-static void	parse_element(t_scene_data *scene, const char *elem)
+static int	parse_element(t_scene_data *scene, const char *elem)
 {
-	static int				elem_count = 1;
 	static const char		*identifiers[]
 		= {"C ", "A ", "L ", "sp", "pl", "cy", NULL};
-	static const t_parser	parsers[] = {
-		parse_camera, parse_ambient, parse_light,
-		parse_sphere, parse_plane, parse_cylinder
-	};
+	static const t_parser	parsers[] = \
+		{parse_camera, parse_ambient, parse_light,
+		parse_sphere, parse_plane, parse_cylinder};
 	size_t					i;
 
 	i = 0;
@@ -46,31 +40,35 @@ static void	parse_element(t_scene_data *scene, const char *elem)
 		{
 			skip_identifier(&elem);
 			if (parsers[i](scene, elem) != 0)
-				error(elem_count);
-			elem_count++;
-			return ;
+				return (-1);
+			return (0);
 		}
 		i++;
 	}
-	error(elem_count);
+	return (-1);
 }
 
-t_scene_data	*parse_scene_file(int fd)
+int	parse_scene_file(t_scene_data *scene, char *file_name)
 {
+	const int		fd = open(file_name, O_RDONLY);
 	const char		*elem = get_next_line(fd);
-	t_scene_data	*scene;
+	int				parse_result;
 
-	scene = ft_calloc(1, sizeof(t_scene_data));
-	if (!scene)
-		return (NULL);
+	if (fd == -1)
+		return (-1);
 	while (elem != NULL)
 	{
 		if (elem[0] != '\n')
-			parse_element(scene, elem);
+			parse_result = parse_element(scene, elem);
 		free((void *)elem);
+		if (parse_result == -1)
+		{
+			free_scene(scene);
+			return (-1);
+		}
 		elem = get_next_line(fd);
 	}
-	return (scene);
+	return (0);
 }
 
 void	free_scene(t_scene_data *scene)
@@ -99,5 +97,4 @@ void	free_scene(t_scene_data *scene)
 		free(curr);
 		curr = next;
 	}
-	free(scene);
 }

@@ -6,7 +6,7 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:17:40 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/24 14:30:19 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/24 16:56:44 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,15 @@ static int	mlx_key_handle(int keycode)
 	return (0);
 }
 
-t_window	*create_window(char *name, int width, int height)
+int	init_mlx_window(t_window *window, char *name, int width, int height)
 {
-	t_window	*window;
-
-	window = ft_calloc(1, sizeof(t_window));
-	if (!window)
-		return (NULL);
 	window->mlx_ptr = mlx_init();
+	if (!window->mlx_ptr)
+		return (-1);
 	window->win_ptr = mlx_new_window(window->mlx_ptr, width, height, name);
+	if (!window->win_ptr)
+		return (-1);
 	mlx_hook(window->win_ptr, 2, 1L << 0, mlx_key_handle, 0);
 	mlx_hook(window->win_ptr, 17, 1L << 17, exit_program, 0);
-	return (window);
+	return (0);
 }
