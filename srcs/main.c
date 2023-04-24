@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/23 13:00:22 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:05:21 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,13 @@ int	main(void)
 	// draw_image(image); // gradient draw
 	// create_sky_image(image, visual_info); //blue and white blending gradient draw
 	hit_lst = hitlst_new();
-	// sphere = init_sphere((t_vector){0, -105.1, -1}, 100);
+	sphere = init_sphere((t_vector){0, -105.1, -1}, 100);
+	hitlst_add(hit_lst, (void *)sphere, OBJ_SPHERE);
 	sphere = init_sphere((t_vector){0, 0, -1}, 0.5);
 	hitlst_add(hit_lst, (void *)sphere, OBJ_SPHERE);
 	hittable_draw(cam, hit_lst);
-	// draw_sphere(image, visual_info, sphere);
-	// sphere = init_sphere((t_vector){0, 0, -1}, 0.5);
-	// draw_sphere2(image, visual_info, sphere);
+	// draw_sphere(image, visual_info, sphere); //drawing without normals
+	// draw_sphere2(image, visual_info, sphere); //drawing with normal vectors
 	mlx_exec(image, "miniRT");
 	free_all(image, visual_info, sphere);
 	free(hit_lst);

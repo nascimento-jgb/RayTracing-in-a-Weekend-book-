@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:11:05 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/23 14:45:45 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 07:29:36 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_hitlst_info	*hitlst_info_new(t_ray *ray)
 		return (NULL);
 	new->ray = ray;
 	new->t_min = 0.001;
-	new->t_max = INFINITY;
+	new->t_max = 1000000000;
 	new->rec = hit_record_new();
 	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:06:16 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/23 15:12:49 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:03:23 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	hittable_draw(t_cam *cam, t_list *list)
 	t_hitlst_info	*list_info;
 	int				x;
 	int				y;
-	int				i;
-	int				j;
+	double			i;
+	double			j;
 
 	y = cam->data->img_height - 1;
 	while (--y >= 0)
@@ -68,6 +68,6 @@ t_hittable	*hittable_new(void *obj, int obj_type)
 	res->obj = obj;
 	res->obj_type = obj_type;
 	if (obj_type == OBJ_SPHERE)
-		res->hit = &sphere_hit;
+		res->hit = FALSE;
 	return (res);
 }

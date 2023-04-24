@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:43:41 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/23 14:43:20 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:02:01 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,19 @@ t_ray	*camera_get_ray(t_cam *cam, double u, double v)
 	t_ray		*res;
 	t_vector	aux;
 	t_vector	aux2;
+	t_vector	aux3;
 
 	res = (t_ray *)malloc(sizeof(t_ray));
 	if (!res)
 		return (NULL);
 	aux2 = vec_mul_scalar(cam->horizontal, u);
 	aux = add_two_vectors(cam->lower_left_corner, aux2);
-	aux2 = vec_mul_scalar(cam->vertical, v);
-	aux = vec_add_apply(aux, aux2);
+	aux3 = vec_mul_scalar(cam->vertical, v);
+	aux = vec_add_apply(aux, aux3);
 	aux = vec_sub_apply(aux, cam->origin);
 	res->origin = cam->origin;
 	res->direction = aux;
+	// printf("Ray direction: x %f y %f z %f \n", res->direction.x, res->direction.y, res->direction.z);
 	return (res);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:49:04 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/23 14:49:01 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 08:17:11 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,9 @@ typedef struct s_hittable
 {
 	void	*obj;
 	int		obj_type;
-	int		(*hit)(void *sphere, t_ray *ray,
-			t_hitlst_info *info, t_hit_record *);
+	int		hit;
+	// int		(*hit)(void *sphere, t_ray *ray,
+	// 		t_hitlst_info *info, t_hit_record *);
 }	t_hittable;
 
 //Calc utils
