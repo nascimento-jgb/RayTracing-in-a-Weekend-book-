@@ -6,7 +6,7 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:17:40 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/24 17:53:11 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/24 18:58:22 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ int	init_mlx_window(t_window *window, char *name, int width, int height)
 		return (-1);
 	mlx_key_hook(window->win_ptr, key_hook, window);
 	mlx_hook(window->win_ptr, X_DESTROY, 0L, exit_program, window);
+	window->width = width;
+	window->height = height;
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 09:05:28 by jonascim          #+#    #+#              #
-#    Updated: 2023/04/24 17:05:25 by helneff          ###   ########.fr        #
+#    Updated: 2023/04/24 19:40:06 by helneff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ PARSER_DIR	:= srcs/parser/
 # STRUCT_DIR	:= srcs/struct/
 # UTILS_DIR	:= srcs/utils/
 
-SRC_FILES		:=	main.c window.c
+SRC_FILES		:=	main.c window.c camera.c image.c
 
 PARSER_FILES	:=	parser.c		parser_utils.c		parser_camera.c parser_ambient.c \
 					parser_light.c	parser_sphere.c		parser_plane.c	parser_cylinder.c

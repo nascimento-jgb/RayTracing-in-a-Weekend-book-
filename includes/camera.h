@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.h                                           :+:      :+:    :+:   */
+/*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:17:43 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/24 18:57:52 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/24 19:25:22 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WINDOW_H
-# define WINDOW_H
+#ifndef CAMERA_H
+# define CAMERA_H
 
-typedef struct s_window
+# include "vec3.h"
+# include "window.h"
+# include "image.h"
+
+typedef struct s_camera
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int		width;
-	int		height;
-}	t_window;
+	t_window	*window;
+	t_vec3		pos;
+	t_vec3		dir;
+	double		width;
+	double		height;
+	double		aspect_ratio;
+	double		focal_length;
+}	t_camera;
 
-int	init_mlx_window(t_window *window, char *name, int width, int height);
+void	init_camera(t_camera *camera, t_window *window);
+void	render(t_image *img, const t_camera *camera);
 
 #endif

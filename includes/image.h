@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.h                                           :+:      :+:    :+:   */
+/*   image.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 14:17:43 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/24 18:57:52 by helneff          ###   ########.fr       */
+/*   Created: 2023/04/24 19:20:28 by helneff           #+#    #+#             */
+/*   Updated: 2023/04/24 20:38:48 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WINDOW_H
-# define WINDOW_H
+#ifndef IMAGE_H
+# define IMAGE_H
 
-typedef struct s_window
+# include "window.h"
+
+typedef struct s_image
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	void	*mlx_img;
+	char	*buffer;
+	int		pixel_bits;
+	int		line_bytes;
+	int		endian;
 	int		width;
 	int		height;
-}	t_window;
+}	t_image;
 
-int	init_mlx_window(t_window *window, char *name, int width, int height);
+int		init_image(t_image *img, t_window *window);
+void	set_pixel(t_image *img, int x, int y, int color);
+void	fill_color(t_image *img, int color);
 
 #endif
