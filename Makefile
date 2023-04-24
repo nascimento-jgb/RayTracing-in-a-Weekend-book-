@@ -6,7 +6,7 @@
 #    By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 09:05:28 by jonascim          #+#    #+#              #
-#    Updated: 2023/04/24 11:06:26 by jonascim         ###   ########.fr        #
+#    Updated: 2023/04/24 12:58:38 by jonascim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ UTILS_DIR	:= srcs/utils/
 SRC_FILES		:=	main.c
 
 OBJ_FILES		:=	sphere_init.c	sphere_hit.c	draw_hittable.c		plane_init.c\
-					plane_hit.c
+					plane_hit.c		cylinder_init.c	cylinder_hit.c
 
 PARS_FILES		:=	parser.c		parser_utils.c		parser_camera.c parser_ambient.c \
 					parser_light.c	parser_sphere.c		parser_plane.c	parser_cylinder.c

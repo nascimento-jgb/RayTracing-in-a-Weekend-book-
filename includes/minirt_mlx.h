@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:49:04 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 11:37:59 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:08:58 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,9 @@ int				check_sphere_hitrange(t_sphere *sphere, t_ray *ray,
 //Plane hit
 int				plane_hit(void *plane, t_ray *ray, t_hitlst_info *info,
 					t_hit_record *rec);
+
+//Cylinder hit
+
 
 //Hit Record
 t_hit_record	*hit_record_new(void);
