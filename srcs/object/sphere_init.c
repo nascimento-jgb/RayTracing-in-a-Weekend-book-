@@ -6,17 +6,17 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:21:40 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 10:08:11 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:57:15 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_mlx.h"
 
-t_sphere2	*init_sphere(t_vector center, double radius)
+t_sphere	*init_sphere(t_vector center, double radius)
 {
-	t_sphere2	*new;
+	t_sphere	*new;
 
-	new = (t_sphere2 *)malloc(sizeof(t_sphere2));
+	new = (t_sphere *)malloc(sizeof(t_sphere));
 	if (!new)
 		return (NULL);
 	new->center = center;
@@ -24,7 +24,7 @@ t_sphere2	*init_sphere(t_vector center, double radius)
 	return (new);
 }
 
-int	ray_hit_sphere(t_sphere2 *sphere, t_ray *ray)
+int	ray_hit_sphere(t_sphere *sphere, t_ray *ray)
 {
 	t_vector	oc;
 	double		a;
@@ -43,7 +43,7 @@ int	ray_hit_sphere(t_sphere2 *sphere, t_ray *ray)
 		return (0);
 }
 
-void	draw_sphere(t_img_data *data, t_cam_info *info, t_sphere2 *sphere)
+void	draw_sphere(t_img_data *data, t_cam_info *info, t_sphere *sphere)
 {
 	t_cam		*new_sky;
 	t_ray		*ray;
@@ -69,7 +69,7 @@ void	draw_sphere(t_img_data *data, t_cam_info *info, t_sphere2 *sphere)
 
 //Functions to draw color accordingly to normalized vector after hitting the sphere
 
-double	ray_hit_sphere2(t_sphere2 *sphere, t_ray *ray)
+double	ray_hit_sphere2(t_sphere *sphere, t_ray *ray)
 {
 	t_vector	oc;
 	double		a;
@@ -88,7 +88,7 @@ double	ray_hit_sphere2(t_sphere2 *sphere, t_ray *ray)
 		return ((half_b * (-1) - sqrt(discriminant)) / a);
 }
 
-void	draw_sphere2(t_img_data *data, t_cam_info *info, t_sphere2 *sphere)
+void	draw_sphere2(t_img_data *data, t_cam_info *info, t_sphere *sphere)
 {
 	t_cam		*new_sky;
 	t_ray		*ray;

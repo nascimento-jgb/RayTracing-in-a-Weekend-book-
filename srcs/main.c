@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 10:11:19 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:56:35 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	main(void)
 {
 	t_img_data	*image;
 	t_cam_info	*visual_info;
-	t_sphere2	*sphere;
+	t_sphere	*sphere;
 	t_list		*hit_lst;
 	t_cam		*cam;
 

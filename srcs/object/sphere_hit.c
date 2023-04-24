@@ -6,13 +6,13 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:33:34 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 10:12:05 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:56:47 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_mlx.h"
 
-int	check_sphere_hitrange(t_sphere2 *sphere, t_ray *ray,
+int	check_sphere_hitrange(t_sphere *sphere, t_ray *ray,
 				t_hitlst_info *info, t_hit_record *rec)
 {
 	int		flag;
@@ -30,9 +30,9 @@ int	check_sphere_hitrange(t_sphere2 *sphere, t_ray *ray,
 			rec->t = t;
 			rec->point = ray_at(ray, t);
 			rec->normal = subtract_two_vectors(rec->point,
-					((t_sphere2 *)sphere)->center);
+					((t_sphere *)sphere)->center);
 			rec->normal = vec_div_scalar_apply(rec->normal,
-					((t_sphere2 *)sphere)->radius);
+					((t_sphere *)sphere)->radius);
 			hit_set_normal(rec, ray);
 			return (TRUE);
 		}
@@ -48,11 +48,11 @@ int	sphere_hit(void *sphere, t_ray *ray, t_hitlst_info *info, t_hit_record *rec)
 	double		c;
 	double		discriminant;
 
-	oc = subtract_two_vectors(ray->origin, ((t_sphere2 *)sphere)->center);
+	oc = subtract_two_vectors(ray->origin, ((t_sphere *)sphere)->center);
 	a = vec_lenght_squared(ray->direction);
 	half_b = dot_product_vectors(oc, ray->direction);
 	c = vec_lenght_squared(oc);
-	c -= pow(((t_sphere2 *)sphere)->radius, 2);
+	c -= pow(((t_sphere *)sphere)->radius, 2);
 	discriminant = (half_b * half_b) - (a * c);
 	if (discriminant < 0)
 		return (FALSE);

@@ -6,11 +6,10 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:49:04 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 08:17:11 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:56:05 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// ctrl + cmd + p to refresh all pages
 #ifndef MINIRT_MLX_H
 # define MINIRT_MLX_H
 
@@ -24,6 +23,7 @@
 # define TRUE	1
 
 # define OBJ_SPHERE	1
+# define OBJ_PLANE	2
 
 typedef struct s_mlx_data
 {
@@ -88,8 +88,6 @@ typedef struct s_hittable
 	void	*obj;
 	int		obj_type;
 	int		hit;
-	// int		(*hit)(void *sphere, t_ray *ray,
-	// 		t_hitlst_info *info, t_hit_record *);
 }	t_hittable;
 
 //Calc utils
@@ -103,7 +101,7 @@ t_vector		get_color(int rgb);
 
 // Img data utils
 t_img_data		*create_img_data(int width, int height);
-void			free_all(t_img_data *data, t_cam_info *info, t_sphere2 *s);
+void			free_all(t_img_data *data, t_cam_info *info, t_sphere *s);
 
 // mlx utils
 int				exit_program(void);
@@ -116,9 +114,9 @@ void			draw_image(t_img_data *data);
 void			draw_vertical_line(t_img_data data, int x);
 void			draw_horizontal_line(t_img_data data, int y);
 void			draw_sphere(t_img_data *data, t_cam_info *info,
-					t_sphere2 *sphere);
+					t_sphere *sphere);
 void			draw_sphere2(t_img_data *data, t_cam_info *info,
-					t_sphere2 *sphere);
+					t_sphere *sphere);
 
 //Cam Image
 t_cam_info		*init_cam_info(double w, double h, double fl);
@@ -130,7 +128,7 @@ t_ray			*render_ray(int x, int y, t_cam *visual);
 //Sphere Hit
 int				sphere_hit(void *sphere, t_ray *ray, t_hitlst_info *info,
 					t_hit_record *rec);
-int				check_sphere_hitrange(t_sphere2 *sphere, t_ray *ray,
+int				check_sphere_hitrange(t_sphere *sphere, t_ray *ray,
 					t_hitlst_info *info, t_hit_record *rec);
 
 //Hit Record

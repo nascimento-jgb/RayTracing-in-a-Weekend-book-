@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:03:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/22 12:23:27 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:57:20 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	atribute_color_to_ray(t_ray *ray)
 	return (get_color_val(aux));
 }
 
-int	atribute_color_to_ray2(t_sphere2 *sphere, t_ray *ray)
+int	atribute_color_to_ray2(t_sphere *sphere, t_ray *ray)
 {
 	t_vector	aux;
 	t_vector	aux2;

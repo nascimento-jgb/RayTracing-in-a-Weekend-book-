@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:38:56 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/22 11:54:56 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:57:37 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ typedef struct s_ray
 	t_vector	direction;
 }	t_ray;
 
-typedef struct s_sphere2
+typedef struct s_sphere
 {
 	t_vector	center;
 	double		radius;
-}	t_sphere2;
+}	t_sphere;
 
 
 //Vector
@@ -62,9 +62,9 @@ t_vector	ray_at(t_ray *ray, double t);
 int			atribute_color_to_ray(t_ray *ray);
 
 //Sphere
-int			ray_hit_sphere(t_sphere2 *sphere, t_ray *ray);
-double		ray_hit_sphere2(t_sphere2 *sphere, t_ray *ray);
-t_sphere2	*init_sphere(t_vector center, double radius);
-int			atribute_color_to_ray2(t_sphere2 *sphere, t_ray *ray);
+int			ray_hit_sphere(t_sphere *sphere, t_ray *ray);
+double		ray_hit_sphere2(t_sphere *sphere, t_ray *ray);
+t_sphere	*init_sphere(t_vector center, double radius);
+int			atribute_color_to_ray2(t_sphere *sphere, t_ray *ray);
 
 #endif
