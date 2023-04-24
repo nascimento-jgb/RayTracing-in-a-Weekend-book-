@@ -6,7 +6,7 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:29:14 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/24 13:15:35 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/24 14:39:48 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ t_scene_data	*parse_scene_file(int fd)
 	{
 		if (elem[0] != '\n')
 			parse_element(scene, elem);
+		free((void *)elem);
 		elem = get_next_line(fd);
 	}
 	return (scene);
