@@ -6,7 +6,7 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:51:58 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/25 16:40:58 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/25 16:48:36 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 void	init_camera(t_camera *camera, t_window *window)
 {
-	camera->window = window;
 	camera->pos = (t_vec3){0.0, 0.0, 0.0};
 	camera->dir = (t_vec3){0.0, 0.0, 0.0};
 	camera->aspect_ratio = (double)window->height / window->width;
