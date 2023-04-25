@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:49:04 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 13:08:58 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:49:45 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 # define FALSE	0
 # define TRUE	1
 
-# define OBJ_SPHERE	1
-# define OBJ_PLANE	2
+# define OBJ_SPHERE		1
+# define OBJ_PLANE		2
+# define OBJ_CYLINDER	3
 
 typedef struct s_mlx_data
 {
@@ -136,7 +137,7 @@ int				plane_hit(void *plane, t_ray *ray, t_hitlst_info *info,
 					t_hit_record *rec);
 
 //Cylinder hit
-
+int	cylinder_hit(void *cy, t_ray *ray, t_hitlst_info *info, t_hit_record *rec);
 
 //Hit Record
 t_hit_record	*hit_record_new(void);

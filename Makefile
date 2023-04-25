@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+         #
+#    By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 09:05:28 by jonascim          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2023/04/24 12:58:38 by jonascim         ###   ########.fr        #
-=======
-#    Updated: 2023/04/24 13:19:12 by helneff          ###   ########.fr        #
->>>>>>> 9b1e97e11c22715966badaf929deb320acfae4f9
+#    Updated: 2023/04/24 15:25:19 by jonascim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 09:28:47 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 11:54:08 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:53:46 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,13 @@ int	hitlst_hit(t_list *list, t_hitlst_info *info)
 			hit_flag = TRUE;
 			info->t_max = info->rec->t;
 			return (3);
+		}
+		else if (hittable->obj_type == OBJ_CYLINDER && cylinder_hit(hittable->obj, info->ray, info,
+					info->rec))
+		{
+			hit_flag = TRUE;
+			info->t_max = info->rec->t;
+			return (4);
 		}
 		list = list->next;
 	}

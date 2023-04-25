@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:06:16 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 12:42:17 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:48:14 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ int	hittable_color(t_list *list, t_hitlst_info *info)
 	{
 		color = add_two_vectors((t_vector){0, 1, 1}, info->rec->normal);
 		color = vec_mul_scalar_apply(color, 0.75);
+	}
+	else if (hitlst_hit(list, info) == 4)
+	{
+		color = add_two_vectors((t_vector){1, 0, 0}, info->rec->normal);
+		color = vec_mul_scalar_apply(color, 0.25);
 	}
 	else
 	{
