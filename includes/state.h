@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.h                                           :+:      :+:    :+:   */
+/*   state.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 14:17:43 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/25 12:29:50 by helneff          ###   ########.fr       */
+/*   Created: 2023/04/25 12:21:26 by helneff           #+#    #+#             */
+/*   Updated: 2023/04/25 12:29:06 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAMERA_H
-# define CAMERA_H
+#ifndef STATE_H
+# define STATE_H
 
-# include "vec3.h"
-# include "state.h"
-# include "window.h"
-# include "image.h"
+typedef struct s_window		t_window;
+typedef struct s_scene_data	t_scene_data;
+typedef struct s_camera		t_camera;
 
-typedef struct s_camera
+typedef struct s_state
 {
-	t_window	*window;
-	t_vec3		pos;
-	t_vec3		dir;
-	double		width;
-	double		height;
-	double		aspect_ratio;
-	double		focal_length;
-}	t_camera;
-
-void	init_camera(t_camera *camera, t_window *window);
-void	render(t_image *img, const t_state *state);
+	t_window		*window;
+	t_scene_data	*scene;
+	t_camera		*camera;
+}	t_state;
 
 #endif

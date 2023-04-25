@@ -6,7 +6,7 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/24 19:34:27 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/25 12:32:34 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <mlx.h>
 #include <libft.h>
 
+#include "state.h"
 #include "parser.h"
 #include "window.h"
 #include "camera.h"
@@ -82,32 +83,33 @@ static void	panic(int return_value, char *err_msg)
 
 static int	expose_hook(void *param)
 {
-	const t_camera	*camera = param;
+	const t_state	*state = param;
 	static t_image	img;
 	static int		first_call = 1;
 
 	if (first_call)
-		render(&img, camera);
+		render(&img, state);
 	if (!img.mlx_img)
 		return (-1);
 	mlx_put_image_to_window(
-		camera->window->mlx_ptr, camera->window->win_ptr, img.mlx_img, 0, 0);
+		state->window->mlx_ptr, state->window->win_ptr, img.mlx_img, 0, 0);
 	return (0);
 }
 
 int	main(void)
 {
-	static t_scene_data	scene;
 	static t_window		window;
+	static t_scene_data	scene;
 	static t_camera		camera;
+	static t_state		state = {&window, &scene, &camera};
 
 	if (parse_scene_file(&scene, "test.rt") == -1)
 		panic(1, "Failed to parse scene file");
+	print_scene_values(&scene);
 	if (init_mlx_window(&window, "MiniRT", IMG_WIDTH, IMG_HEIGHT) == -1)
 		panic(1, "Failed to initialize MLX window");
-	print_scene_values(&scene);
 	init_camera(&camera, &window);
-	mlx_expose_hook(window.win_ptr, expose_hook, &camera);
+	mlx_expose_hook(window.win_ptr, expose_hook, &state);
 	mlx_loop(window.mlx_ptr);
 	return (0);
 }

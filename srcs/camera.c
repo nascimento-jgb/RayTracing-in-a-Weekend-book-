@@ -6,7 +6,7 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:51:58 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/24 20:41:02 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/25 12:26:09 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	init_camera(t_camera *camera, t_window *window)
 	camera->width = camera->height * camera->aspect_ratio;
 }
 
-void	render(t_image *img, const t_camera *camera)
+void	render(t_image *img, const t_state *state)
 {
 	const int	color = mlx_get_color_value(
-			camera->window->mlx_ptr, 0x00ABCDEF);
+			state->window->mlx_ptr, 0x00ABCDEF);
 
-	if (init_image(img, camera->window) == -1)
+	if (init_image(img, state->window) == -1)
 		return ;
 	fill_color(img, color);
 }
