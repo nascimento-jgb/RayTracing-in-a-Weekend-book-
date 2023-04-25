@@ -6,7 +6,7 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:51:58 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/24 20:41:20 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/24 21:09:58 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "image.h"
 
-int	init_image(t_image *img, t_window *window)
+int	init_image(t_image *img, const t_window *window)
 {
 	img->mlx_img = mlx_new_image(window->mlx_ptr,
 			window->width, window->height);

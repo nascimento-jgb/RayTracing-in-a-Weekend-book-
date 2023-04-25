@@ -6,7 +6,7 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 19:20:28 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/24 20:38:48 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/24 21:09:55 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_image
 	int		height;
 }	t_image;
 
-int		init_image(t_image *img, t_window *window);
+int		init_image(t_image *img, const t_window *window);
 void	set_pixel(t_image *img, int x, int y, int color);
 void	fill_color(t_image *img, int color);
 
