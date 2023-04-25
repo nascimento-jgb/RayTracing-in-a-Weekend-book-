@@ -6,7 +6,7 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:17:43 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/25 12:29:50 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/25 16:35:09 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_camera
 {
 	t_window	*window;
+	t_image		image;
 	t_vec3		pos;
 	t_vec3		dir;
 	double		width;
@@ -30,6 +31,6 @@ typedef struct s_camera
 }	t_camera;
 
 void	init_camera(t_camera *camera, t_window *window);
-void	render(t_image *img, const t_state *state);
+t_image	*render(t_camera *camera, const t_state *state);
 
 #endif

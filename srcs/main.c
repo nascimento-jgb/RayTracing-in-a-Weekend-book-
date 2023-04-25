@@ -6,7 +6,7 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:58:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/04/25 12:32:34 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/25 16:41:44 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,16 @@ static void	panic(int return_value, char *err_msg)
 
 static int	expose_hook(void *param)
 {
-	const t_state	*state = param;
-	static t_image	img;
-	static int		first_call = 1;
+	static t_image	*image = NULL;
+	t_state			*state;
 
-	if (first_call)
-		render(&img, state);
-	if (!img.mlx_img)
-		return (-1);
+	state = param;
+	if (!image)
+		image = render(state->camera, state);
+	if (!image || !image->mlx_img)
+		panic(1, "Failed to render image");
 	mlx_put_image_to_window(
-		state->window->mlx_ptr, state->window->win_ptr, img.mlx_img, 0, 0);
+		state->window->mlx_ptr, state->window->win_ptr, image->mlx_img, 0, 0);
 	return (0);
 }
 
