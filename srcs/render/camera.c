@@ -6,13 +6,15 @@
 /*   By: helneff <helneff@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:51:58 by helneff           #+#    #+#             */
-/*   Updated: 2023/04/25 12:26:09 by helneff          ###   ########.fr       */
+/*   Updated: 2023/04/25 15:58:17 by helneff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 
 #include "camera.h"
+#include "color.h"
+#include "vec3.h"
 
 void	init_camera(t_camera *camera, t_window *window)
 {
@@ -27,8 +29,7 @@ void	init_camera(t_camera *camera, t_window *window)
 
 void	render(t_image *img, const t_state *state)
 {
-	const int	color = mlx_get_color_value(
-			state->window->mlx_ptr, 0x00ABCDEF);
+	const int	color = int2col(state, 0x00ABCDEF);
 
 	if (init_image(img, state->window) == -1)
 		return ;
